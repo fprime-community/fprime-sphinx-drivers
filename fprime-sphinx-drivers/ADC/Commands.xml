@@ -1,0 +1,42 @@
+<commands>
+    <command kind="async" opcode="0x0" mnemonic="ADC_SOC_SET_RATE" >
+        <comment>
+        Selects 0.1Hz or 1Hz acquisition rate.
+        </comment>
+        <args>
+          <arg name="rate" type="U8">
+            <comment> Rate of acquisition. Rate of 0 will set ADC to 0.1Hz, anything else will set it to 1Hz </comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x1" mnemonic="ADC_SOC_SET_RUN" >
+        <comment>
+        Set ADC's run mode.
+        </comment>
+        <args>
+          <arg name="run_mode" type="U8">
+            <comment> Set run mode. 0 will stop ADC. Anything else will have ADC running. </comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x2" mnemonic="ADC_SOC_SET_PWR_CTRL" >
+        <comment>
+        Set ADC's power mode.
+        </comment>
+        <args>
+          <arg name="pwr_ctrl" type="U8">
+            <comment> Set power mode. 0 will disable power. Anything else will enable power. </comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x3" mnemonic="ADC_SOC_SET_TLM_TIMEOUT" >
+        <comment>
+        Set timeout value for how long to wait for new telemetry before generating a warning.
+        </comment>
+        <args>
+          <arg name="timeout" type="U32">
+            <comment> Timeout value in tick units -- based on connected rategroup connection. </comment>
+          </arg>
+        </args>
+    </command>
+</commands>

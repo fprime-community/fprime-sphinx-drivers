@@ -1,0 +1,150 @@
+<events>
+  <event id="0" name="NOR_ERASE_BUSY" severity="WARNING_HI" format_string="Failed to process erase request. NOR Manager is in the %d state and not in the IDLE (%d) state. Error code %d.">
+    <comment>
+      The manager cannot erase if not in IDLE state
+    </comment>
+    <args>
+      <arg name="actual_state" type="U32">
+        <comment>The state of the NOR Manager</comment>
+      </arg>
+      <arg name="expected_state" type="U32">
+        <comment>The expected state of the NOR Manager</comment>
+      </arg>
+      <arg name="error_status" type="U32">
+        <comment>The error status</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="1" name="NOR_ERASE_FAIL" severity="WARNING_HI" format_string="Erase failed with the following error code %d.">
+    <comment>
+      The manager failed to erase.
+    </comment>
+    <args>
+      <arg name="error_status" type="U32">
+        <comment>The error status</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="2" name="NOR_ERASING" severity="ACTIVITY_LO" format_string="Erasing NOR">
+    <comment>
+      Start the erasing of the NOR.
+    </comment>
+  </event>
+  <event id="3" name="NOR_ERASE_TIMEOUT" severity="WARNING_HI" format_string="Erasing timed out">
+    <comment>
+      Erasing timed out.
+    </comment>
+  </event>
+  <event id="4" name="NOR_ERASE_DONE" severity="ACTIVITY_LO" format_string="Erasing done">
+    <comment>
+      Erasing done.
+    </comment>
+  </event>
+  <event id="5" name="NOR_RESET_FAIL" severity="WARNING_HI" format_string="Resetting in invalid state (%d). Need to be in %d.">
+    <comment>
+      Reset failed.
+    </comment>
+    <args>
+      <arg name="actual_state" type="U32">
+        <comment>The state of the NOR Manager</comment>
+      </arg>
+      <arg name="expected_state" type="U32">
+        <comment>The expected state of the NOR Manager</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="6" name="NOR_RESETTING" severity="ACTIVITY_LO" format_string="Received reset command. Resetting.">
+    <comment>
+      Resetting NOR.
+    </comment>
+  </event>
+  <event id="7" name="NOR_UNLOCK_BYPASS_FAILED" severity="WARNING_HI" format_string="Failed to unlock bypass.">
+    <comment>
+      Failed to unlock bypass.
+    </comment>
+  </event>
+  <event id="8" name="NOR_UNLOCK_BYPASS_PROGRAM_FAILED" severity="WARNING_HI" format_string="Failed to unlock bypass program.">
+    <comment>
+      Failed to unlock bypass program.
+    </comment>
+  </event>
+  <event id="9" name="NOR_UNLOCK_BYPASS_RESET_FAILED" severity="WARNING_HI" format_string="Failed to unlock bypass reset.">
+    <comment>
+      Failed to unlock bypass reset.
+    </comment>
+  </event>
+  <event id="10" name="NOR_FAILED_TO_VERIFY_DATA" severity="WARNING_HI" format_string="Failed to verify written data 0x%08X 0x%02X.">
+    <comment>
+      Failed to verify a byte was written to NOR.
+    </comment>
+    <args>
+      <arg name="dest_addr" type="U32">
+        <comment>The destination address</comment>
+      </arg>
+      <arg name="source" type="U8">
+        <comment>The data to be written</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="11" name="NOR_UNLOCK_BYPASS_RESET_DURING_ERASE" severity="WARNING_HI" format_string="Cannot issue UNLOCK BYPASS RESET while in ERASING mode.">
+    <comment>
+      Warn that one cannot issue the UNLOCK BYPASS RESET while erasing the bank.
+    </comment>
+  </event>
+  <event id="12" name="NOR_FAILED_TO_RESET" severity="WARNING_HI" format_string="Failed to write the reset command sequence to the NOR.">
+    <comment>
+      Warn that we failed to do a write to NOR.
+    </comment>
+  </event>
+  <event id="13" name="NOR_WRITE_TIMEOUT" severity="WARNING_HI" format_string="Writing timed out">
+    <comment>
+      Writing timed out.
+    </comment>
+  </event>
+  <event id="14" name="NOR_FAILED_TO_VERIFY_CHECKSUM" severity="WARNING_HI" format_string="Failed to verify checksum on NOR.">
+    <comment>
+      Warn that the calculated checksum did not match with stored checksum on NOR.
+    </comment>
+  </event>
+  <event id="15" name="NOR_CHECKSUM_VERIFY_DONE" severity="ACTIVITY_LO" format_string="Verifying checksum done">
+    <comment>
+      Verifying checksum done.
+    </comment>
+  </event>
+  <event id="16" name="NOR_VERIFY_BUSY" severity="WARNING_HI" format_string="Failed to process verify request. NOR Manager is in the %d state and not in the IDLE (%d) state.">
+    <comment>
+      The manager cannot verify if not in IDLE state
+    </comment>
+    <args>
+      <arg name="actual_state" type="U32">
+        <comment>The state of the NOR Manager</comment>
+      </arg>
+      <arg name="expected_state" type="U32">
+        <comment>The expected state of the NOR Manager</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="17" name="NOR_FAILED_TO_READ_DATA" severity="WARNING_HI" format_string="Failed to read address 0x%08X and store to 0x%08X.">
+    <comment>
+      Failed to read NOR memory location and store its contents to memory buffer
+    </comment>
+    <args>
+      <arg name="nor_addr" type="U32">
+        <comment>The address in NOR to read from</comment>
+      </arg>
+      <arg name="dest" type="U32">
+        <comment>The memory buffer address use to store the value of nor_addr</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="18" name="NOR_READ_TIMEOUT" severity="WARNING_HI" format_string="Reading timed out">
+    <comment>
+      Reading timed out.
+    </comment>
+  </event>
+  <event id="19" name="NOR_ALREADY_ERASING" severity="WARNING_HI" format_string="NOR is already in the middle of an erase request.">
+    <comment>
+      When requesting an erase, if NOR is already in the middle of an erase, then let user know
+    </comment>
+  </event>
+</events>    

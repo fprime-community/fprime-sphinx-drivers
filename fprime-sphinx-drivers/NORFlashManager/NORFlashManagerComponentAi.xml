@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="NORFlashManager" kind="active" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_GetSize/NORFlash_GetSizePortAi.xml</import_port_type>
+    <import_port_type>Fw/Log/LogPortAi.xml</import_port_type>
+    <import_port_type>Svc/Ping/PingPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_ChecksumDone/NORFlash_ChecksumDonePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NOR_done/NOR_donePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Verify/NORFlash_VerifyPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdResponsePortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_BW/NORFlash_BWPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_RW/NORFlash_RWPortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdRegPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_EraseBankAddr/NORFlash_EraseBankAddrPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Cancel/NORFlash_CancelPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Reset/NORFlash_ResetPortAi.xml</import_port_type>
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_EraseBankNumber/NORFlash_EraseBankNumberPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_BR/NORFlash_BRPortAi.xml</import_port_type>
+    <import_dictionary>fprime-sphinx-drivers/NORFlashManager/Commands.xml</import_dictionary>
+    <import_dictionary>fprime-sphinx-drivers/NORFlashManager/Events.xml</import_dictionary>
+    <ports>
+    
+
+        <port name="get_bl_size" data_type="Drv::NORFlash_GetSize"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="eventOut" data_type="Fw::Log"  kind="output" role="LogEvent"    max_number="1">
+        </port>
+
+        <port name="PingResponse" data_type="Svc::Ping"  kind="output"    max_number="1">
+        </port>
+
+        <port name="verification_done" data_type="Drv::NORFlash_ChecksumDone"  kind="output"    max_number="1">
+        </port>
+
+        <port name="PingRecv" data_type="Svc::Ping"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="erase_done" data_type="Drv::NOR_done"  kind="output"    max_number="1">
+        </port>
+
+        <port name="read_done" data_type="Drv::NOR_done"  kind="output"    max_number="1">
+        </port>
+
+        <port name="worker_verify" data_type="Drv::NORFlash_Verify"  kind="output"    max_number="1">
+        </port>
+
+        <port name="timeCaller" data_type="Fw::Time"  kind="output" role="TimeGet"    max_number="1">
+        </port>
+
+        <port name="cmdResponse" data_type="Fw::CmdResponse"  kind="output" role="CmdResponse"    max_number="1">
+        </port>
+
+        <port name="request_verification" data_type="Drv::NORFlash_Verify"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="cmdIn" data_type="Fw::Cmd"  kind="input" role="Cmd"    max_number="1">
+        </port>
+
+        <port name="worker_write" data_type="Drv::NORFlash_BW"  kind="output"    max_number="1">
+        </port>
+
+        <port name="get_fsw_size" data_type="Drv::NORFlash_GetSize"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="request_write" data_type="Drv::NORFlash_RW"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="cmdReg" data_type="Fw::CmdReg"  kind="output" role="CmdRegistration"    max_number="1">
+        </port>
+
+        <port name="worker_done" data_type="Drv::NOR_done"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="request_read" data_type="Drv::NORFlash_RW"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="write_done" data_type="Drv::NOR_done"  kind="output"    max_number="1">
+        </port>
+
+        <port name="worker_erase" data_type="Drv::NORFlash_EraseBankAddr"  kind="output"    max_number="1">
+        </port>
+
+        <port name="worker_cancel" data_type="Drv::NORFlash_Cancel"  kind="output"    max_number="1">
+        </port>
+
+        <port name="worker_reset" data_type="Drv::NORFlash_Reset"  kind="output"    max_number="1">
+        </port>
+
+        <port name="schedIn" data_type="Svc::Sched"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="request_erase" data_type="Drv::NORFlash_EraseBankNumber"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="worker_read" data_type="Drv::NORFlash_BR"  kind="output"    max_number="1">
+        </port>
+    </ports>
+
+</component>

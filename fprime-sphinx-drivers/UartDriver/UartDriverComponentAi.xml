@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<component name="UartDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>Fw/Buffer/BufferSendPortAi.xml</import_port_type>
+    <ports>
+
+        <port name="WriteSerial" data_type="Fw::BufferSend"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="ReadSerial" data_type="Fw::BufferSend"  kind="guarded_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

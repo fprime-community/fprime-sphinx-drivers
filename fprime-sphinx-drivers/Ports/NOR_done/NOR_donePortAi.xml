@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/interface_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<interface name="NOR_done" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="done" type="I8" pass_by="value">
+        </arg>
+        <arg name="context1" type="U32" pass_by="value">
+        </arg>
+        <arg name="context2" type="U32" pass_by="value">
+        </arg>
+    </args>
+</interface>

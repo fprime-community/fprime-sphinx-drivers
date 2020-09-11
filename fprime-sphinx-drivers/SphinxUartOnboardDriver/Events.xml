@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/event_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<!--===== Drv SphinxUartOnboardDriver Events =========== -->
+
+<events>
+    <event id="0" name="UOBD_HardwareInitStatusError" severity="WARNING_HI"
+        format_string="UART hardware init error: bit %d set to %d, should be %d. (%s bit)">
+        <comment>The specified UART driver status register bit was not correct.</comment>
+        <args>
+            <arg name="bitIndex" type="U8">
+                <comment>A zero-indexed bit in the status register</comment>
+            </arg>
+            <arg name="reported" type="U8">
+                <comment>Reported condition</comment>
+            </arg>
+            <arg name="expected" type="U8">
+                <comment>Expected condition</comment>
+            </arg>
+            <arg name="bitName" type="string" size="2">
+                <comment>The name of the bit</comment>
+            </arg>
+        </args>
+    </event>
+    <event id="1" name="UOBD_HardwareInitPurgeError" severity="WARNING_HI"
+        format_string="UART hardware init error: purge operation took too long and exited">
+        <comment>The receiver and transmitter FIFO purge operation took too long and timed out.</comment>
+    </event>
+
+    <event id="2" name="UOBD_BUFF_WRAP" severity="WARNING_HI"
+        format_string="UART circular buffer wrap around occured">
+        <comment>UART circular buffer wrap around occured.</comment>
+    </event>
+</events>

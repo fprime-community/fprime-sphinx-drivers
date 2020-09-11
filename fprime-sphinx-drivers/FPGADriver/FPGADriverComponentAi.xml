@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<component name="FPGADriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxRegRead/SphinxRegReadPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxRegWrite/SphinxRegWritePortAi.xml</import_port_type>
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <import_port_type>Svc/Cycle/CyclePortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="read_reg" data_type="Drv::SphinxRegRead"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="write_reg" data_type="Drv::SphinxRegWrite"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="timeRTIOut" data_type="Svc::Sched"  kind="output"    max_number="1">
+        </port>
+
+        <port name="cycleOut" data_type="Svc::Cycle"  kind="output"    max_number="1">
+        </port>
+    </ports>
+
+</component>

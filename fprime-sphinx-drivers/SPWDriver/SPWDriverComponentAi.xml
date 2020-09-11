@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="SPWDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP/SphinxSPW_WriteRMAPPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP/SphinxSPW_ReadRMAPPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_Status/SphinxSPW_StatusPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="writeRMAP" data_type="Drv::SphinxSPW_WriteRMAP"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="readRMAP" data_type="Drv::SphinxSPW_ReadRMAP"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="reset" data_type="Drv::SphinxSPW_Status"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="getStatus" data_type="Drv::SphinxSPW_Status"  kind="guarded_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

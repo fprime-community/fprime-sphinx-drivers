@@ -1,0 +1,27 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/NORFlashDriverComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/NORFlashDriverComponentImpl.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/Ports/NORFlash_WriteB
+        fprime-sphinx-drivers/Ports/NORFlash_ReadB
+        )
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Random
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/Ports/NORFlash_WriteB
+        fprime-sphinx-drivers/Ports/NORFlash_ReadB
+        Os
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Read.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Write.cpp"
+        )
+register_fprime_ut()

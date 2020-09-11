@@ -1,0 +1,21 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/ADCComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/ADCComponentImpl.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/ADCPacket
+        )
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/ADCPacket
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        )
+register_fprime_ut()
+

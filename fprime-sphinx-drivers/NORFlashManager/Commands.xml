@@ -1,0 +1,42 @@
+<commands>
+    <command kind="async" opcode="0x0" mnemonic="NOR_FLASH_RESET" >
+        <comment>
+        Reset the NOR Flash
+        </comment>
+        <args>
+          <arg name="bank_number" type="U8">
+            <comment>The bank number to reset</comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x1" mnemonic="NOR_FLASH_SET_WRITE_TIMEOUT" >
+        <comment>
+        Set the timeout for a write to the specified value.
+        </comment>
+        <args>
+          <arg name="timeout" type="U32">
+            <comment>The timeout value in schedIn ticks</comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x2" mnemonic="NOR_FLASH_SET_ERASE_TIMEOUT" >
+        <comment>
+        Set the timeout for erase to the specified value.
+        </comment>
+        <args>
+          <arg name="timeout" type="U32">
+            <comment>The timeout value in schedIn ticks</comment>
+          </arg>
+        </args>
+    </command>
+    <command kind="async" opcode="0x3" mnemonic="NOR_FLASH_SET_VERIFY_TIMEOUT" >
+        <comment>
+        Set the timeout for NOR verification to the specified value.
+        </comment>
+        <args>
+          <arg name="timeout" type="U32">
+            <comment>The timeout value in schedIn ticks</comment>
+          </arg>
+        </args>
+    </command>
+</commands>

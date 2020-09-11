@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<component name="GPIODriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxGPIO_ReadPin/SphinxGPIO_ReadPinPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxGPIO_WritePin/SphinxGPIO_WritePinPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="gpio_readPin" data_type="Drv::SphinxGPIO_ReadPin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="gpio_setPin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="gpio_clearPin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+    </ports>
+
+</component>

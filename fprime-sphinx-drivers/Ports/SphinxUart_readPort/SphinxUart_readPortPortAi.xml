@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Type_Schema.rnc" type="compact"?>
+
+<interface name="SphinxUart_readPort" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="read_buf_ptr" type="U8" pass_by="pointer">
+        </arg>
+        <arg name="nBytes" type="U32" pass_by="value">
+        </arg>
+        <arg name="timeout" type="U32" pass_by="value">
+        </arg>
+    </args>
+    <return  type="I32"  pass_by="value"/>
+</interface>

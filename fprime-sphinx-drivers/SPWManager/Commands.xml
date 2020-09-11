@@ -1,0 +1,94 @@
+<commands>
+    <command kind="async" opcode="0x0" mnemonic="SPWMGR_RMAP_WRITE_WORD" >
+      <comment>
+        Manually execute a synchronous RMAP write request for a single word (4 bytes)
+      </comment>
+      <args>
+        <arg
+          name="targetAddress"
+          type="U32"
+        >
+          <comment>Address of target to write</comment>
+        </arg>
+        <arg
+          name="value"
+          type="U32"
+        >
+          <comment>Value to write</comment>
+        </arg>
+        <arg
+          name="timeout"
+          type="U32"
+        >
+          <comment>Number of cycles to timeout request</comment>
+        </arg>
+      </args>
+    </command>
+
+    <command kind="async" opcode="0x1" mnemonic="SPWMGR_RMAP_READ_WORD" >
+      <comment>
+        Manually execute a synchronous RMAP read request for a single word (4 bytes)
+      </comment>
+      <args>
+        <arg
+          name="targetAddress"
+          type="U32"
+        >
+          <comment>Address of target to read</comment>
+        </arg>
+        <arg
+          name="timeout"
+          type="U32"
+        >
+          <comment>Number of cycles to timeout request</comment>
+        </arg>
+      </args>
+    </command>
+
+    <command kind="async" opcode="0x2" mnemonic="SPWMGR_RESET_LINK" >
+      <comment>
+        Reset the SpaceWire link
+      </comment>
+      <args>
+      </args>
+    </command>
+
+    <command kind="async" opcode="0x3" mnemonic="SPWMGR_SET_PARAMS" >
+      <comment>
+        Manually set the RMAP settings that the SPWManager uses
+      </comment>
+      <args>
+        <arg
+          name="destinationAddress"
+          type="U8"
+        >
+          <comment>The destination node address</comment>
+        </arg>
+        <arg
+          name="destinationKey"
+          type="U8"
+        >
+          <comment>The destination node's RMAP key</comment>
+        </arg>
+        <arg
+          name="increment"
+          type="U8"
+        >
+          <comment>RMAP increment setting</comment>
+        </arg>
+        <arg
+          name="verify"
+          type="U8"
+        >
+          <comment>RMAP verify setting</comment>
+        </arg>
+        <arg
+          name="acknowledge"
+          type="U8"
+        >
+          <comment>acknowledge</comment>
+        </arg>
+      </args>
+    </command>
+
+</commands>

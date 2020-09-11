@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="SPWManager" kind="active" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_SendRequest/SphinxSPW_SendRequestPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP/SphinxSPW_WriteRMAPPortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdRegPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_StatusOut/SphinxSPW_StatusOutPortAi.xml</import_port_type>
+    <import_port_type>Fw/Log/LogPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_SetParam/SphinxSPW_SetParamPortAi.xml</import_port_type>
+    <import_port_type>Svc/Ping/PingPortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdResponsePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_Status/SphinxSPW_StatusPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP/SphinxSPW_ReadRMAPPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPW_Trigger/SphinxSPW_TriggerPortAi.xml</import_port_type>
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <import_port_type>Fw/Cmd/CmdPortAi.xml</import_port_type>
+    <import_dictionary>fprime-sphinx-drivers/SPWManager/Commands.xml</import_dictionary>
+    <import_dictionary>fprime-sphinx-drivers/SPWManager/Events.xml</import_dictionary>
+    <ports>
+    
+
+        <port name="read" data_type="Drv::SphinxSPW_SendRequest"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="driverWriteRMAP" data_type="Drv::SphinxSPW_WriteRMAP"  kind="output"    max_number="1">
+        </port>
+
+        <port name="cmdRegOut" data_type="Fw::CmdReg"  kind="output" role="CmdRegistration"    max_number="1">
+        </port>
+
+        <port name="readAsyncDMA" data_type="Drv::SphinxSPW_SendRequest"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="statusOut" data_type="Drv::SphinxSPW_StatusOut"  kind="output"    max_number="1">
+        </port>
+
+        <port name="eventOut" data_type="Fw::Log"  kind="output" role="LogEvent"    max_number="1">
+        </port>
+
+        <port name="setParam" data_type="Drv::SphinxSPW_SetParam"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="PingResponse" data_type="Svc::Ping"  kind="output"    max_number="1">
+        </port>
+
+        <port name="PingRecv" data_type="Svc::Ping"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="cmdResponseOut" data_type="Fw::CmdResponse"  kind="output" role="CmdResponse"    max_number="1">
+        </port>
+
+        <port name="driverReset" data_type="Drv::SphinxSPW_Status"  kind="output"    max_number="1">
+        </port>
+
+        <port name="driverReadRMAP" data_type="Drv::SphinxSPW_ReadRMAP"  kind="output"    max_number="1">
+        </port>
+
+        <port name="writeAsync" data_type="Drv::SphinxSPW_SendRequest"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="timeCaller" data_type="Time"  kind="output" role="TimeGet"    max_number="1">
+        </port>
+
+        <port name="resetLink" data_type="Drv::SphinxSPW_Trigger"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="schedIn" data_type="Svc::Sched"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="cmdIn" data_type="Fw::Cmd"  kind="input" role="Cmd"    max_number="1">
+        </port>
+
+        <port name="write" data_type="Drv::SphinxSPW_SendRequest"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="readAsync" data_type="Drv::SphinxSPW_SendRequest"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="driverGetStatus" data_type="Drv::SphinxSPW_Status"  kind="output"    max_number="1">
+        </port>
+    </ports>
+
+</component>

@@ -1,0 +1,11 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/SphinxTimeComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/SphinxTimeComponentImpl.cpp"
+        )
+set(MOD_DEPS
+    fprime-sphinx-drivers/Util
+    fprime-sphinx-drivers/Ports/SphinxTimeVal
+    fprime-sphinx-drivers/Ports/SphinxRegRead
+    fprime-sphinx-drivers/Ports/SphinxRegWrite
+)
+register_fprime_module()

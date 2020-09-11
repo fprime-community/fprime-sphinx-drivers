@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/interface_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<interface name="SphinxSPI_RW16_Generic" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="write_buf_ptr" type="U16" pass_by="pointer">
+        </arg>
+        <arg name="read_buf_ptr" type="U16" pass_by="pointer">
+        </arg>
+        <arg name="nWords" type="U32" pass_by="value">
+        </arg>
+        <arg name="timeout_uS" type="U32" pass_by="value">
+        </arg>
+    </args>
+    <return  type="I32"  pass_by="value"/>
+</interface>

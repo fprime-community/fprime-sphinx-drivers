@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<component name="NORFlashMgrWorker" kind="active" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Cancel/NORFlash_CancelPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_EraseBankAddr/NORFlash_EraseBankAddrPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_ReadB/NORFlash_ReadBPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NOR_done/NOR_donePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Reset/NORFlash_ResetPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_Verify/NORFlash_VerifyPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_BW/NORFlash_BWPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_WriteB/NORFlash_WriteBPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_BR/NORFlash_BRPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="cancel" data_type="Drv::NORFlash_Cancel"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="erase" data_type="Drv::NORFlash_EraseBankAddr"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="read" data_type="Drv::NORFlash_ReadB"  kind="output"    max_number="1">
+        </port>
+
+        <port name="statusOut" data_type="Drv::NOR_done"  kind="output"    max_number="1">
+        </port>
+
+        <port name="reset" data_type="Drv::NORFlash_Reset"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="verify" data_type="Drv::NORFlash_Verify"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="write_block" data_type="Drv::NORFlash_BW"  kind="async_input"    max_number="1">
+        </port>
+
+        <port name="write" data_type="Drv::NORFlash_WriteB"  kind="output"    max_number="1">
+        </port>
+
+        <port name="read_block" data_type="Drv::NORFlash_BR"  kind="async_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

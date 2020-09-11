@@ -1,0 +1,34 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/GPIODriverComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/GPIODriverComponentImpl.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/GPIOInterruptRouter
+        fprime-sphinx-drivers/Os
+)
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Random
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/GPIOInterruptRouter
+        fprime-sphinx-drivers/Os
+)
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Sphinx-VxWorks6")
+    list(APPEND UT_MOD_DEPS
+            fprime-vxworks/VxWorks
+        )
+endif()
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GPIODriverInterrupt.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/ReadWrite.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Init.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Interrupt.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Scenarios/Selected.cpp"
+        )
+register_fprime_ut()

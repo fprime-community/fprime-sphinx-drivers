@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Type_Schema.rnc" type="compact"?>
+
+<interface name="SphinxGPIO_WritePin" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="pin_num" type="U32" pass_by="value">
+        </arg>
+    </args>
+    <return  type="I32"  pass_by="value"/>
+</interface>

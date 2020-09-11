@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<internal_interfaces>
+    <internal_interface name="wakeupHandler">
+        <comment>
+        Interface to allow the ISR to poke the thread to handle wakeups.
+        </comment>
+        <args>
+        </args>
+    </internal_interface>
+</internal_interfaces>

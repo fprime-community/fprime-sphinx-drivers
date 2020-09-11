@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="GPTimerDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_Unclaim/GPTimerDriver_UnclaimPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_Claim/GPTimerDriver_ClaimPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_ReadControl/GPTimerDriver_ReadControlPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_WriteCounter/GPTimerDriver_WriteCounterPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_WriteControl/GPTimerDriver_WriteControlPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_ReadCounter/GPTimerDriver_ReadCounterPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_ReadReload/GPTimerDriver_ReadReloadPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/GPTimerDriver_WriteReload/GPTimerDriver_WriteReloadPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="gPTimerDriver_Unclaim" data_type="Drv::GPTimerDriver_Unclaim"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_Claim" data_type="Drv::GPTimerDriver_Claim"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_ReadControl" data_type="Drv::GPTimerDriver_ReadControl"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_WriteCounter" data_type="Drv::GPTimerDriver_WriteCounter"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_WriteControl" data_type="Drv::GPTimerDriver_WriteControl"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_ReadCounter" data_type="Drv::GPTimerDriver_ReadCounter"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_ReadReload" data_type="Drv::GPTimerDriver_ReadReload"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="gPTimerDriver_WriteReload" data_type="Drv::GPTimerDriver_WriteReload"  kind="guarded_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

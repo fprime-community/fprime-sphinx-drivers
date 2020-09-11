@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="SphinxUartOnboardDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxUart_bytesUsedPort/SphinxUart_bytesUsedPortPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxUart_readPort/SphinxUart_readPortPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxUart_writePort/SphinxUart_writePortPortAi.xml</import_port_type>
+    <import_port_type>Fw/Log/LogPortAi.xml</import_port_type>
+    <import_dictionary>fprime-sphinx-drivers/SphinxUartOnboardDriver/Events.xml</import_dictionary>
+    <ports>
+    
+
+        <port name="bytesUsed" data_type="Drv::SphinxUart_bytesUsedPort"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="read" data_type="Drv::SphinxUart_readPort"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="timeCaller" data_type="Fw::Time"  kind="output" role="TimeGet"    max_number="1">
+        </port>
+
+        <port name="write" data_type="Drv::SphinxUart_writePort"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="logOut" data_type="Fw::Log"  kind="output" role="LogEvent"    max_number="1">
+        </port>
+    </ports>
+
+</component>

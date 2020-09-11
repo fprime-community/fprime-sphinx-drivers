@@ -1,0 +1,21 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/FPGASPIDriverComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/FPGASPIDriverComponentImpl.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        )
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Random
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Util
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/ReadWrite.cpp"
+        )
+register_fprime_ut()

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/interface_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<interface name="NORFlash_ReadB" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="dest" type="U32" pass_by="value">
+        </arg>
+        <arg name="data" type="U8" pass_by="pointer">
+        </arg>
+    </args>
+    <return  type="I8"  pass_by="value"/>
+</interface>

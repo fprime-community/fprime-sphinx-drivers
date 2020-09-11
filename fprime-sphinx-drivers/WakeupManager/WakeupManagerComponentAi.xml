@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="WakeupManager" kind="active" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/WakeupManager_Sleep/WakeupManager_SleepPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_dictionary>fprime-sphinx-drivers/WakeupManager/InternalInterface.xml</import_dictionary>
+    <ports>
+    
+
+        <port name="wakeupManager_Sleep" data_type="Drv::WakeupManager_Sleep"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="time" data_type="Fw::Time"  kind="output"    max_number="1">
+        </port>
+    </ports>
+
+</component>

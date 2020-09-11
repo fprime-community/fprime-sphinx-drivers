@@ -1,0 +1,70 @@
+<events>
+  <event id="0" name="ADC_SOC_SetRate" severity="ACTIVITY_HI" format_string="Received rate %d. Setting ADC SOC rate bit to %d.">
+    <comment>
+      Report Setting ADC SOC rate to this value
+    </comment>
+    <args>
+      <arg name="rate" type="U8">
+        <comment>The rate ground sent up</comment>
+      </arg>
+      <arg name="rate_bit" type="U8">
+        <comment>The rate to set ADC SOC</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="1" name="ADC_SOC_SetRun" severity="ACTIVITY_HI" format_string="Setting ADC SOC run bit to %d.">
+    <comment>
+      Report Setting ADC SOC run to this value
+    </comment>
+    <args>
+      <arg name="run" type="U8">
+        <comment>The run to set ADC SOC</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="2" name="ADC_SOC_SetPwrCtrl" severity="ACTIVITY_HI" format_string="Setting ADC SOC power control bit to %d.">
+    <comment>
+      Report Setting ADC SOC power control to this value
+    </comment>
+    <args>
+      <arg name="pwr_ctrl" type="U8">
+        <comment>The power control to set ADC SOC</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="3" name="ADC_SOC_CouldNotSetPwrCtrlBit" severity="ACTIVITY_HI" format_string="Couldn't set bit for power control.">
+    <comment>
+      Report couldn't set power control bit.
+    </comment>
+  </event>
+  <event id="4" name="ADC_SOC_CouldNotSetRunBit" severity="ACTIVITY_HI" format_string="Couldn't set bit for run mode.">
+    <comment>
+      Report couldn't set run mode bit.
+    </comment>
+  </event>
+  <event id="5" name="ADC_SOC_CouldNotSetRate" severity="ACTIVITY_HI" format_string="Couldn't set bit for rate.">
+    <comment>
+      Report couldn't set rate bit.
+    </comment>
+  </event>
+  <event id="6" name="ADC_SOC_TimedOut" severity="WARNING_HI" format_string="ADC_SOC tlm_rdy bit not set for %d ticks. Failed to read valid ADC_SOC telemetry.">
+    <comment>
+      Only read telemetry when tlm_rdy bit is set. If tlm_rdy bit has not been set for some time, then report EVR.
+    </comment>
+    <args>
+      <arg name="ticks" type="U32">
+        <comment>The number of ticks until ADC SOC times out</comment>
+      </arg>
+    </args>
+  </event>
+  <event id="7" name="ADC_SOC_SetTimeout" severity="ACTIVITY_HI" format_string="Set ADC_SOC Telemetry timeout value to %d.">
+    <comment>
+      Report what value ADC's Telemetry timeout was set.
+    </comment>
+    <args>
+      <arg name="timeout" type="U32">
+        <comment>The ADC's Telemetry timeout value</comment>
+      </arg>
+    </args>
+  </event>
+</events>    

@@ -1,0 +1,24 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/FPGADriverComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/FPGADriverComponentImpl.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        )
+register_fprime_module()
+set(UT_MOD_DEPS
+        #eventually change to not use local random
+        fprime-sphinx-drivers/Random
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Util
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Read.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Time.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Rules/Write.cpp"
+        )
+register_fprime_ut()

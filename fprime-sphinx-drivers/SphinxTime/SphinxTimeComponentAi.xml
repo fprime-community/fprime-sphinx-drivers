@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<component name="SphinxTime" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxTimeVal/SphinxTimeValPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxRegWrite/SphinxRegWritePortAi.xml</import_port_type>
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxRegRead/SphinxRegReadPortAi.xml</import_port_type>
+    <import_port_type>Fw/Log/LogPortAi.xml</import_port_type>
+    <import_port_type>Fw/Tlm/TlmPortAi.xml</import_port_type>
+    <import_dictionary>fprime-sphinx-drivers/SphinxTime/Events.xml</import_dictionary>
+    <ports>
+    
+
+        <port name="timeInREL" data_type="Drv::SphinxTimeVal"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="timeCaller" data_type="Fw::Time"  kind="output" role="TimeGet"    max_number="1">
+        </port>
+
+        <port name="sphinxRegWrite_out" data_type="Drv::SphinxRegWrite"  kind="output"    max_number="1">
+        </port>
+
+        <port name="timeInABS" data_type="Drv::SphinxTimeVal"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="schedIn" data_type="Svc::Sched"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="sphinxRegRead_out" data_type="Drv::SphinxRegRead"  kind="output"    max_number="1">
+        </port>
+
+        <port name="timeGetPort" data_type="Fw::Time"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="logOut" data_type="Fw::Log"  kind="output" role="LogEvent"    max_number="1">
+        </port>
+
+        <port name="tlmOut" data_type="Fw::Tlm"  kind="output" role="Telemetry"    max_number="1">
+        </port>
+    </ports>
+
+</component>

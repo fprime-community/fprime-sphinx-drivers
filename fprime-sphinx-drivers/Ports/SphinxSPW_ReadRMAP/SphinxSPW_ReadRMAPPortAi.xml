@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/interface_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<interface name="SphinxSPW_ReadRMAP" namespace="Drv">
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="dest_addr" type="U8" pass_by="value">
+        </arg>
+        <arg name="dest_key" type="U8" pass_by="value">
+        </arg>
+        <arg name="read_addr" type="U32" pass_by="value">
+        </arg>
+        <arg name="buf_ptr" type="U8" pass_by="pointer">
+        </arg>
+        <arg name="num_bytes" type="U32" pass_by="value">
+        </arg>
+        <arg name="increment" type="U8" pass_by="value">
+        </arg>
+    </args>
+    <return  type="I32"  pass_by="value"/>
+</interface>

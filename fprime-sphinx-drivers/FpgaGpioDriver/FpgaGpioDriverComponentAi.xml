@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="FpgaGpioDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxGPIO_WritePin/SphinxGPIO_WritePinPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxGPIO_ReadPin/SphinxGPIO_ReadPinPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="setPin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="clearPin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="readPin" data_type="Drv::SphinxGPIO_ReadPin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="enablePin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+
+        <port name="disablePin" data_type="Drv::SphinxGPIO_WritePin"  kind="guarded_input"    max_number="10">
+        </port>
+    </ports>
+
+</component>

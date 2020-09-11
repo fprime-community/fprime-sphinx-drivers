@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="FPGASPIDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxFPGASPI_RW/SphinxFPGASPI_RWPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="read_write" data_type="Drv::SphinxFPGASPI_RW"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="Time" data_type="Fw::Time"  kind="output"    max_number="1">
+        </port>
+    </ports>
+
+</component>

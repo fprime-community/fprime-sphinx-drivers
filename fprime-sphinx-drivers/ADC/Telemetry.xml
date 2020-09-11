@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:../xml/ISF_Component_Schema.rnc" type="compact"?>
+
+<telemetry>
+  <channel id="0x00" name="ADC_o_a2d_tlm0" data_type="U32" abbrev="AADC-0000">
+    <comment>Input 0 result</comment>
+  </channel>
+  <channel id="0x01" name="ADC_o_a2d_tlm1" data_type="U32" abbrev="AADC-0001">
+    <comment>Input 1 result</comment>
+  </channel>
+  <channel id="0x02" name="ADC_o_a2d_tlm2" data_type="U32" abbrev="AADC-0002">
+    <comment>Input 2 result</comment>
+  </channel>
+  <channel id="0x03" name="ADC_o_a2d_tlm3" data_type="U32" abbrev="AADC-0003">
+    <comment>Input 3 result</comment>
+  </channel>
+  <channel id="0x04" name="ADC_o_a2d_tlm4" data_type="U32" abbrev="AADC-0004">
+    <comment>Input 4 result</comment>
+  </channel>
+  <channel id="0x05" name="ADC_o_a2d_tlm5" data_type="U32" abbrev="AADC-0005">
+    <comment>Input 5 result</comment>
+  </channel>
+  <channel id="0x06" name="ADC_o_a2d_tlm6" data_type="U32" abbrev="AADC-0006">
+    <comment>Input 6 result</comment>
+  </channel>
+  <channel id="0x07" name="ADC_o_a2d_tlm7" data_type="U32" abbrev="AADC-0007">
+    <comment>Input 7 result</comment>
+  </channel>
+  <channel id="0x08" name="ADC_a2d_stat" data_type="U32" abbrev="AADC-0008">
+    <comment>Status of ADC</comment>
+  </channel>
+</telemetry>

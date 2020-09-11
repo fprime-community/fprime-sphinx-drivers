@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="NORFlashDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_ReadB/NORFlash_ReadBPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/NORFlash_WriteB/NORFlash_WriteBPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="read" data_type="Drv::NORFlash_ReadB"  kind="sync_input"    max_number="1">
+        </port>
+
+        <port name="write" data_type="Drv::NORFlash_WriteB"  kind="sync_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

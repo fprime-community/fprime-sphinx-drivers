@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/interface_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<interface name="Apid" namespace="Drv">
+    <include_header>Fw/Time/Time.hpp</include_header>
+    <include_header>Fw/ComFile/FileBuffer.hpp</include_header>
+    <comment>
+    Port Type interface arguments.
+    </comment>
+    <args>
+        <arg name="timetag" type="Fw::Time" pass_by="value">
+        </arg>
+        <arg name="apid" type="U16" pass_by="value">
+        </arg>
+        <arg name="data" type="Fw::FileBuffer" pass_by="reference">
+        </arg>
+        <arg name="apid_rec" type="U16" pass_by="value">
+        </arg>
+    </args>
+</interface>

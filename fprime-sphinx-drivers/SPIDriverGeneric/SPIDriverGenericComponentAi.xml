@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="SPIDriverGeneric" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_Unclaim/SphinxSPI_UnclaimPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_RW16_Generic/SphinxSPI_RW16_GenericPortAi.xml</import_port_type>
+    <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_RW32_Generic/SphinxSPI_RW32_GenericPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_Claim/SphinxSPI_ClaimPortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_Configure/SphinxSPI_ConfigurePortAi.xml</import_port_type>
+    <import_port_type>fprime-sphinx-drivers/Ports/SphinxSPI_RW_Generic/SphinxSPI_RW_GenericPortAi.xml</import_port_type>
+    <ports>
+    
+
+        <port name="spi_unclaim" data_type="SphinxSPI_Unclaim"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="read_write_16" data_type="Drv::SphinxSPI_RW16_Generic"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="timeCaller" data_type="Time"  kind="output"    max_number="1">
+        </port>
+
+        <port name="read_write_32" data_type="Drv::SphinxSPI_RW32_Generic"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="spi_claim" data_type="Drv::SphinxSPI_Claim"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="spi_configure" data_type="Drv::SphinxSPI_Configure"  kind="guarded_input"    max_number="1">
+        </port>
+
+        <port name="read_write_8" data_type="Drv::SphinxSPI_RW_Generic"  kind="guarded_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>

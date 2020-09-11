@@ -1,0 +1,43 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/SPWManagerComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/SPWManagerComponentImpl.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/SPWRequestQueue.cpp"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/Ports/SphinxSPW_SendRequest
+        fprime-sphinx-drivers/Ports/SphinxSPW_SetParam
+        fprime-sphinx-drivers/Ports/SphinxSPW_StatusOut
+        fprime-sphinx-drivers/Ports/SphinxSPW_Status
+        fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_Trigger
+        Utils
+        )
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Sphinx-VxWorks6")
+    list(APPEND MOD_DEPS
+        "fprime-vxworks/VxWorks"
+    )
+endif()
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Random
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/SPWDriver
+        fprime-sphinx-drivers/Ports/SphinxSPW_SendRequest
+        fprime-sphinx-drivers/Ports/SphinxSPW_SetParam
+        fprime-sphinx-drivers/Ports/SphinxSPW_StatusOut
+        fprime-sphinx-drivers/Ports/SphinxSPW_Status
+        fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_Trigger
+        Utils
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        )
+register_fprime_ut()

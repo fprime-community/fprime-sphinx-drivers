@@ -1,0 +1,34 @@
+set(SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/SPWDriverComponentAi.xml"
+        "${CMAKE_CURRENT_LIST_DIR}/SPWDriverComponentImpl.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/RMAPHeader.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/SPWHeader.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/sphinx-spw/rmapapi.c"
+        "${CMAKE_CURRENT_LIST_DIR}/sphinx-spw/spwapi.c"
+        )
+set(MOD_DEPS
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_Toggle
+        fprime-sphinx-drivers/Ports/SphinxSPW_Status
+        Fw/Com
+        )
+register_fprime_module()
+set(UT_MOD_DEPS
+        fprime-sphinx-drivers/Util/LinuxDrvReg
+        fprime-sphinx-drivers/Util
+        fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP
+        fprime-sphinx-drivers/Ports/SphinxSPW_Toggle
+        fprime-sphinx-drivers/Ports/SphinxSPW_Status
+        Fw/Com
+        )
+set(UT_SOURCE_FILES
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/Tester.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/TesterBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/GTestBase.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/test/ut/spwapi_stubs.c"
+        )
+register_fprime_ut()

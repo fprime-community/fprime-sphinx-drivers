@@ -1,0 +1,189 @@
+<events>
+
+  <event
+    id="0x00"
+    name="SPWManager_SpaceWireInitializationError"
+    severity="WARNING_HI"
+    format_string="Received error status code %d from driver while initializing SpaceWire link" 
+  >
+    <comment>Error encountered when SPWDriver tried to initialize SpaceWire core</comment>
+    <args>
+      <arg
+        name="status"
+        type="I32"
+      >
+        <comment>Error status from SPWDriver</comment>
+      </arg>
+    </args>
+  </event>
+
+  <event
+    id="0x01"
+    name="SPWManager_SpaceWireLinkDisconnected"
+    severity="WARNING_HI"
+    format_string="SpaceWire link is disconnected" 
+  >
+    <comment>Unable to talk to any device on the SpaceWire link</comment>
+    <args>
+    </args>
+  </event>
+
+  <event
+    id="0x02"
+    name="SPWManager_SpaceWireError"
+    severity="WARNING_HI"
+    format_string="Received error status %u (code %d) from driver" 
+  >
+    <comment>Indicate nonzero error status from SPWDriver</comment>
+    <args>
+      <arg
+        name="status"
+        type="ENUM">
+        <enum name="SpaceWireError_status">
+          <item name="ERR_INIT"/>
+          <item name="ERR_DISCONNECTED"/>
+          <item name="ERR_TX_LINK"/>
+          <item name="ERR_RX_TRUNCATED"/>
+          <item name="ERR_RX_DATA_CRC"/>
+          <item name="ERR_RX_HDR_CRC"/>
+          <item name="ERR_RX_EEP"/>
+          <item name="ERR_RX_DESERIALIZATION"/>
+          <item name="ERR_RX_UNEXPECTED_REPLY"/>
+          <item name="ERR_RMAP_TRANS_ID_MISMATCH"/>
+          <item name="ERR_RMAP_DATA_LEN_MISMATCH"/>
+          <item name="ERR_RMAP_STAT_GENERAL"/>
+          <item name="ERR_RMAP_STAT_UNUSED_TYPE"/>
+          <item name="ERR_RMAP_STAT_INVALID_KEY"/>
+          <item name="ERR_RMAP_STAT_INVALID_DATA_CRC"/>
+          <item name="ERR_RMAP_STAT_EARLY_EOP"/>
+          <item name="ERR_RMAP_STAT_CARGO_TOO_LARGE"/>
+          <item name="ERR_RMAP_STAT_EEP"/>
+          <item name="ERR_RMAP_STAT_VERIFY_BUFFER_OVERRUN"/>
+          <item name="ERR_RMAP_STAT_CMD_UNAUTHORIZED"/>
+          <item name="ERR_RMAP_STAT_DATA_LEN_ERR"/>
+          <item name="ERR_RMAP_STAT_INVALID_DEST_ADDR"/>
+          <item name="ERR_RMAP_STAT_UNKNOWN"/>
+        </enum>
+        <comment>Status enum</comment>
+      </arg>
+      <arg
+        name="statusCode"
+        type="I32"
+      >
+        <comment>Error status code from SPWDriver</comment>
+      </arg>
+    </args>
+  </event>
+
+  <event
+    id="0x03"
+    name="SPWManager_SpaceWireTransactionTimeout"
+    severity="WARNING_HI"
+    format_string="Transaction ran past timeout of %u; command=%u, address=%u, status=%d" 
+  >
+    <comment>Indicate that the SPW transaction timed out</comment>
+    <args>
+      <arg
+        name="timeout"
+        type="U32"
+      >
+        <comment>Timeout value</comment>
+      </arg>
+      <arg
+        name="command"
+        type="ENUM">
+        <enum name="SpaceWireTransactionTimeout_command">
+          <item name="SYNC_RMAP_READ"/>
+          <item name="SYNC_RMAP_WRITE"/>
+          <item name="ASYNC_RMAP_READ"/>
+          <item name="ASYNC_RMAP_WRITE"/>
+        </enum>
+        <comment>Type of command</comment>
+      </arg>
+      <arg
+        name="address"
+        type="U32"
+      >
+        <comment>Target address to perform command on</comment>
+      </arg>
+      <arg
+        name="status"
+        type="ENUM">
+        <enum name="SpaceWireTransactionTimeout_status">
+          <item name="TRANSACTION_SENDING"/>
+          <item name="TRANSACTION_RECEIVING"/>
+        </enum>
+        <comment>State of transaction at timeout</comment>
+      </arg>
+    </args>
+  </event>
+
+  <event
+    id="0x04"
+    name="SPWManager_RMAPWriteResult"
+    severity="ACTIVITY_LO"
+    format_string="RMAP write of address %x succeeded" 
+  >
+    <comment>Report result of RMAP Read command</comment>
+    <args>
+      <arg
+        name="address"
+        type="U32"
+      >
+        <comment>Target address to perform command on</comment>
+      </arg>
+    </args>
+  </event>
+
+  <event
+    id="0x05"
+    name="SPWManager_RMAPReadResult"
+    severity="ACTIVITY_LO"
+    format_string="RMAP read of address 0x%x returned a value of 0x%x" 
+  >
+    <comment>Report result of RMAP Read command</comment>
+    <args>
+      <arg
+        name="address"
+        type="U32"
+      >
+        <comment>Target address to perform command on</comment>
+      </arg>
+      <arg
+        name="value"
+        type="U32"
+      >
+        <comment>Value returned from read</comment>
+      </arg>
+    </args>
+  </event>
+
+  <event
+    id="0x06"
+    name="SPWManager_Busy"
+    severity="WARNING_LO"
+    format_string="Cannot execute command because SPWManager is currently handling requests" 
+  >
+    <comment>Rejection message for the RMAP_WRITE_ AND RMAP_READ commands</comment>
+    <args>
+    </args>
+  </event>
+
+  <event
+    id="0x07"
+    name="SPWManager_ResetLink"
+    severity="ACTIVITY_LO"
+    format_string="Reset SpaceWire link and aborted %u requests in the queue" 
+  >
+    <comment>Confirmation that the link was reset and all requests aborted</comment>
+    <args>
+      <arg
+        name="numAborted"
+        type="U32"
+      >
+        <comment>Number of async requests aborted</comment>
+      </arg>
+    </args>
+  </event>
+
+</events>
