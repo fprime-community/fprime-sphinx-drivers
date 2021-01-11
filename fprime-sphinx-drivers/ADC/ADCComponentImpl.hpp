@@ -14,7 +14,7 @@
 
 #include "fprime-sphinx-drivers/ADC/ADCComponentAc.hpp"
 #include "fprime-sphinx-drivers/ADCPacket/ADCPacket.hpp"
-#include "Fw/ComFile/FileBuffer.hpp"
+#include "Fw/Com/ComBuffer.hpp"
 
 #ifndef SPHINX_ADC_SOC_BASE_ADDR
 #define SPHINX_ADC_SOC_BASE_ADDR 0x20000000
@@ -220,7 +220,7 @@ namespace Drv {
       adc_soc m_a2d_ctrl;
 
       ADCPacket m_adc_packet;
-      Fw::FileBuffer m_file_buff;
+      Fw::ComBuffer m_com_buff;
 
       U32 m_apid_rt;
       U32 m_apid_rec;

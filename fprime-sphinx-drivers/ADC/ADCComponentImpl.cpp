@@ -287,8 +287,8 @@ namespace Drv {
     this->adc_soc_get_tlm(&m_a2d_stat);
     m_adc_packet.setV8(m_a2d_stat.val);
 
-    m_file_buff.resetSer();
-    stat = m_adc_packet.serialize(m_file_buff);
+    m_com_buff.resetSer();
+    stat = m_adc_packet.serialize(m_com_buff);
     FW_ASSERT(stat == Fw::FW_SERIALIZE_OK, stat);
   }
 
@@ -322,7 +322,7 @@ namespace Drv {
     timetag = this->getTime();
 
     if (this->isConnected_adcOut_OutputPort(0)) {
-      this->adcOut_out(0, timetag, m_apid_rt, m_file_buff, m_apid_rec);
+      this->adcOut_out(0, timetag, m_apid_rt, m_com_buff, m_apid_rec);
     }
 
     // telemeter raw values from ADC
