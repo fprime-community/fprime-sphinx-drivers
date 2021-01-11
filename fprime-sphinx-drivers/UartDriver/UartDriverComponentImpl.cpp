@@ -116,8 +116,8 @@ namespace Drv {
     )
   {
     I32 status;
-    U8 *data = reinterpret_cast<U8*>(fwBuffer.getdata());
-    U32 nbytes = fwBuffer.getsize();
+    U8 *data = reinterpret_cast<U8*>(fwBuffer.getData());
+    U32 nbytes = fwBuffer.getSize();
 
     FW_ASSERT(this->m_serialFd > 0);
     FW_ASSERT(data != NULL);
@@ -134,8 +134,8 @@ namespace Drv {
     )
   {
     I32 status;
-    U8 *data = reinterpret_cast<U8*>(fwBuffer.getdata());
-    U32 nbytes = fwBuffer.getsize();
+    U8 *data = reinterpret_cast<U8*>(fwBuffer.getData());
+    U32 nbytes = fwBuffer.getSize();
 
     FW_ASSERT(this->m_serialFd > 0);
     FW_ASSERT(data != NULL);
