@@ -19,6 +19,10 @@
 #include <Os/FileSystem.hpp>
 
 namespace Drv {
+#ifndef TGT_OS_TYPE_VXWORKS
+  /* Emulated register memory for unit tests */
+  std::map<U32, U32> emuRegMap;
+#endif
 
   /* Converts a buffer address into a U32 for writes */
   U32 ptrToU32(U8* ptr)
@@ -59,41 +63,12 @@ namespace Drv {
     volatile U32 * port = reinterpret_cast<U32*>(reg);
     U32 val = *port;
 #else
-    Os::File file;
-    I8 fileName[32] = "";
-    I8* env = (I8*)getenv("REGISTER_FILE_PATH");
-    if(env == NULL)
-    {
-        return reg;
-    }
-    I8 hexName[150] = "";
-    I32 env_size = strnlen((const char *)env, sizeof(hexName));
-    (void)strncpy((char *)hexName, (char *)env, env_size);
-    (void)strncat((char *)hexName, "/fprime-sphinx-drivers/Util/0x", 30);
-    I32 stat = snprintf((char *)fileName, 32, "%X", reg);
-    FW_ASSERT(stat > 0, stat);
-    (void)strncat((char *)hexName, (char *)fileName, 32);
-    (void)strncat((char *)hexName,"_reg.bin", 8);
-    Os::File::Status status = file.open((char *)hexName, Os::File::OPEN_READ);
-    U32 val;
-    if(status == Os::File::OP_OK) //read from file
-    {
-	U32 buffer[1];
-	NATIVE_INT_TYPE fileSize = 4;
-	NATIVE_INT_TYPE ret = file.read(buffer,fileSize);	
-	FW_ASSERT(ret == Os::File::OP_OK);
-	val = *buffer;
-    }
-    else if(status == Os::File::DOESNT_EXIST) //file doesn't exist
-    {
-	val = reg;
-    }
-    else //file read error, default to previous behavior
-    {
-	val = reg;
+    // Return register as value if register not set
+    U32 val = reg;
+    if(emuRegMap.count(reg)) {
+      val = emuRegMap[reg];
     }
 
-    file.close();
 #endif
 
     return val;
@@ -102,38 +77,11 @@ namespace Drv {
   /* Writes to the register of a given address */
   void writeReg(U32 reg, U32 val, U32 flag) {
 #ifdef TGT_OS_TYPE_VXWORKS
-    flag |= 1;
     volatile U32 * port = reinterpret_cast<U32*>(reg);
     *port = val;
 #else
-    if(!flag)
-    {
-        Os::File file;
-        I8 fileName[32] = "";
-        I8* env = (I8*)getenv("REGISTER_FILE_PATH");
-        if(env == NULL)
-        {
-          return;
-        }
-        I8 hexName[150] = "";
-        I32 env_size = strnlen((const char*)env, sizeof(hexName));
-        (void)strncpy((char *)hexName, (char *)env, env_size);
-        (void)strncat((char *)hexName, "/fprime-sphinx-drivers/Util/0x", 30);
-        I32 stat = snprintf((char *)fileName, 32, "%X", reg);
-        FW_ASSERT(stat > 0, stat);
-        (void)strncat((char *)hexName, (char *)fileName, 32);
-        (void)strncat((char *)hexName,"_reg.bin", 8);
-        Os::File::Status ret = file.open((char *)hexName, Os::File::OPEN_WRITE);
-        FW_ASSERT(ret == Os::File::OP_OK);
-
-        //prepare data                                                          
-        NATIVE_INT_TYPE fileSize = 4;
-        NATIVE_INT_TYPE initValue = val;
-        NATIVE_INT_TYPE* data = &initValue;
-        //write to file
-        ret = file.write(data, fileSize);
-        FW_ASSERT(ret == Os::File::OP_OK);
-        file.close();
+    if(!flag) {
+      emuRegMap[reg] = val;
     }
 #endif
   }

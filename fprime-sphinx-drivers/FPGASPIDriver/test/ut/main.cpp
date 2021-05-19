@@ -20,11 +20,6 @@ namespace Drv {
 		         (U32) FPGA_SPI_WIDTH_16);
     tester.ERROR();
   }
-
-  TEST(Teardown, OK) {
-    Drv::SphinxDrvReg::clearFiles();
-  }
-
 }
 
 int main(int argc, char **argv) {

@@ -7,7 +7,7 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 
 #include <fprime-sphinx-drivers/NORFlashMgrWorker/NORFlashMgrWorkerComponentImpl.hpp>
@@ -29,7 +29,7 @@ extern "C" {
 namespace Drv {
 
   // ----------------------------------------------------------------------
-  // Construction, initialization, and destruction 
+  // Construction, initialization, and destruction
   // ----------------------------------------------------------------------
 
     NORFlashMgrWorkerComponentImpl ::
@@ -50,7 +50,7 @@ namespace Drv {
     init(
         const NATIVE_INT_TYPE queueDepth,
         const NATIVE_INT_TYPE instance
-    ) 
+    )
   {
     NORFlashMgrWorkerComponentBase::init(queueDepth, instance);
   }
@@ -376,69 +376,36 @@ namespace Drv {
       if(!Drv::isInNorAddrSpace(bank_addr)) { return NORMGR_ADDR_OUT_OF_RANGE; }
 
       // send the chip erase sequence
-  #ifdef TGT_OS_TYPE_VXWORKS
-      U32 lockKey;
-      STATUS status = taskLock();
-      FW_ASSERT(status == OK, status);
-      lockKey = intLock();
-  #endif
       stat = this->write_out(0, ( bank_addr + 0xaaa ),  0xaa );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
 
       stat = this->write_out(0, ( bank_addr + 0x555 ),  0x55 );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
 
       stat = this->write_out(0, ( bank_addr + 0xaaa ),  0x80 );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
 
       stat = this->write_out(0, ( bank_addr + 0xaaa ),  0xaa );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
 
       stat = this->write_out(0, ( bank_addr + 0x555 ),  0x55 );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
 
       stat = this->write_out(0, ( bank_addr + 0xaaa ),  0x10 );
       if(stat != Drv::NORFlashDriverComponentImpl::NOR_OK) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_ERASE;
       }
-  #ifdef TGT_OS_TYPE_VXWORKS
-      intUnlock(lockKey);
-      taskUnlock();
-  #endif
+
       return NORMGR_OK;
   }
 
@@ -528,46 +495,26 @@ namespace Drv {
   {
     I8 stat = 0;
     U32 addr;
-#ifdef TGT_OS_TYPE_VXWORKS
-    U32 lockKey;
-    STATUS status = taskLock();
-    FW_ASSERT(status == OK, status);
-    lockKey = intLock();
-#endif
+
     // unlock byte-mode sequence
     addr = bank + 0xAAA;
     stat = this->write_out(0, addr, 0xAA);
     if(stat != 0) {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lockKey);
-        taskUnlock();
-    #endif
         return NORMGR_FAILED_TO_UNLOCK;
     }
 
     addr = bank + 0x555;
     stat = this->write_out(0, addr, 0x55);
     if(stat != 0) {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lockKey);
-        taskUnlock();
-    #endif
         return NORMGR_FAILED_TO_UNLOCK;
     }
 
     addr = bank + 0xAAA;
     stat = this->write_out(0, addr, 0x20);
     if(stat != 0) {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lockKey);
-        taskUnlock();
-    #endif
         return NORMGR_FAILED_TO_UNLOCK;
     }
-#ifdef TGT_OS_TYPE_VXWORKS
-    intUnlock(lockKey);
-    taskUnlock();
-#endif
+
     return NORMGR_OK;
   }
 
@@ -576,68 +523,34 @@ namespace Drv {
   {
     I8 stat = 0;
     if(!Drv::isInNorAddrSpace(dest_ptr)) { return NORMGR_ADDR_OUT_OF_RANGE; }
-#ifdef TGT_OS_TYPE_VXWORKS
-    U32 lockKey;
-    STATUS status = taskLock();
-    FW_ASSERT(status == OK, status);
-    lockKey = intLock();
-#endif
     // write byte-mode sequence
     stat = this->write_out(0, bank, 0xA0);
     if(stat != 0) {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lockKey);
-        taskUnlock();
-    #endif
         return NORMGR_FAILED_TO_UNLOCK_PROGRAM;
     }
 
     stat = this->write_out(0, dest_ptr, src);
     if(stat != 0) {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lockKey);
-        taskUnlock();
-    #endif
         return NORMGR_FAILED_TO_UNLOCK_PROGRAM;
     }
-#ifdef TGT_OS_TYPE_VXWORKS
-    intUnlock(lockKey);
-    taskUnlock();
-#endif
+
     return NORMGR_OK;
   }
   nor_mgr_status NORFlashMgrWorkerComponentImpl ::
       unlock_bypass_reset(U32 bank)
     {
       I8 stat = 0;
-  #ifdef TGT_OS_TYPE_VXWORKS
-      U32 lockKey;
-      STATUS status = taskLock();
-      FW_ASSERT(status == OK, status);
-      lockKey = intLock();
-  #endif
+
       // write byte-mode sequence
       stat = this->write_out(0, bank, 0x90);
       if(stat != 0) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_UNLOCK_PROGRAM;
       }
 
       stat = this->write_out(0, bank, 0x00);
       if(stat != 0) {
-      #ifdef TGT_OS_TYPE_VXWORKS
-          intUnlock(lockKey);
-          taskUnlock();
-      #endif
           return NORMGR_FAILED_TO_UNLOCK_PROGRAM;
       }
-  #ifdef TGT_OS_TYPE_VXWORKS
-      intUnlock(lockKey);
-      taskUnlock();
-  #endif
 
       return NORMGR_OK;
     }

@@ -120,7 +120,7 @@ namespace Drv {
       this->m_from_eventOut[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -149,7 +149,7 @@ namespace Drv {
       this->m_from_PingResponse[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -178,7 +178,7 @@ namespace Drv {
       this->m_from_verification_done[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -207,7 +207,7 @@ namespace Drv {
       this->m_from_erase_done[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -236,7 +236,7 @@ namespace Drv {
       this->m_from_read_done[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -265,7 +265,7 @@ namespace Drv {
       this->m_from_worker_verify[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -294,7 +294,7 @@ namespace Drv {
       this->m_from_timeCaller[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -323,7 +323,7 @@ namespace Drv {
       this->m_from_cmdResponse[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -352,7 +352,7 @@ namespace Drv {
       this->m_from_worker_write[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -381,7 +381,7 @@ namespace Drv {
       this->m_from_cmdReg[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -410,7 +410,7 @@ namespace Drv {
       this->m_from_write_done[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -439,7 +439,7 @@ namespace Drv {
       this->m_from_worker_erase[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -468,7 +468,7 @@ namespace Drv {
       this->m_from_worker_cancel[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -497,7 +497,7 @@ namespace Drv {
       this->m_from_worker_reset[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -526,7 +526,7 @@ namespace Drv {
       this->m_from_worker_read[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -556,7 +556,7 @@ namespace Drv {
       this->m_from_LogText[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -580,7 +580,7 @@ namespace Drv {
       this->m_to_get_bl_size[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -603,7 +603,7 @@ namespace Drv {
       this->m_to_PingRecv[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -626,7 +626,7 @@ namespace Drv {
       this->m_to_request_verification[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -649,7 +649,7 @@ namespace Drv {
       this->m_to_get_fsw_size[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -672,7 +672,7 @@ namespace Drv {
       this->m_to_request_write[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -695,7 +695,7 @@ namespace Drv {
       this->m_to_worker_done[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -718,7 +718,7 @@ namespace Drv {
       this->m_to_request_read[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -741,7 +741,7 @@ namespace Drv {
       this->m_to_schedIn[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -764,7 +764,7 @@ namespace Drv {
       this->m_to_request_erase[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),

@@ -14,7 +14,6 @@
 
 #include "GTestBase.hpp"
 #include "fprime-sphinx-drivers/ADC/ADCComponentImpl.hpp"
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv {
 

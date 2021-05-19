@@ -113,11 +113,6 @@ namespace Drv {
     Selected::Tester tester("NORFlashManager", (U32) 1000);
     tester.Random();
   }
-  
-  TEST(Teardown, OK) {
-    SphinxDrvReg::clearFiles();
-  }
-  
 }
 
 int main(int argc, char **argv) {

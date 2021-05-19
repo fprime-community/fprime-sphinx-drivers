@@ -87,14 +87,9 @@ namespace Drv {
 		        false, false, 0, 0, 0, //timer1
 		        false, false, 0, 0, 0, //timer2
 		        false, false, 0, 0, 0, //timer3
-		        false, false, 0, 0, 0); //timer4   
+		        false, false, 0, 0, 0); //timer4
     tester.Random();
   }
-
-  TEST(Teardown, OK) {
-    SphinxDrvReg::clearFiles();
-  }
-
 }
 
 int main(int argc, char **argv) {

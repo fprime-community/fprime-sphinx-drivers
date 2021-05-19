@@ -5,11 +5,18 @@
 // Functions for GTest.
 
 #include "AtomicBitTwiddleTester.hpp"
+#include "AtomicUtilTester.hpp"
 
 TEST(AtomicBitTwiddleTest, TestAllBits)
 {
     Drv::AtomicBitTwiddleTester tester;
     tester.testAllBits();
+}
+
+TEST(AtomicBitTwiddleTest, TestAllBitsAtomic)
+{
+    Drv::AtomicBitTwiddleTester tester;
+    tester.testAllBitsAtomic();
 }
 
 TEST(AtomicBitTwiddleDeathTest, TestOutOfRangeSet)
@@ -24,8 +31,28 @@ TEST(AtomicBitTwiddleDeathTest, TestOutOfRangeClear)
     tester.testOutOfRangeClear();
 }
 
-TEST(Teardown, OK) {
-    Drv::SphinxDrvReg::clearFiles();
+TEST(AtomicUtilTester, TestAddition)
+{
+    Drv::AtomicUtilTester tester;
+    tester.testAddition();
+}
+
+TEST(AtomicUtilTester, TestSubtraction)
+{
+    Drv::AtomicUtilTester tester;
+    tester.testSubtraction();
+}
+
+TEST(AtomicUtilTester, TestAnd)
+{
+    Drv::AtomicUtilTester tester;
+    tester.testAnd();
+}
+
+TEST(AtomicUtilTester, TestOr)
+{
+    Drv::AtomicUtilTester tester;
+    tester.testOr();
 }
 
 int main(int argc, char** argv)

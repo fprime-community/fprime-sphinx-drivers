@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Read.cpp
 // \author ciankc
 // \brief  Rules/Read class implementation
@@ -13,9 +13,9 @@
 #include "Read.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Read__OK(void) const
@@ -49,7 +49,7 @@ namespace Drv {
     action__Read__OK(void)
   {
     //printf("Action for Read OK\n");
-    
+
     this->clearHistory();
 
     //write 8 bytes of data
@@ -80,7 +80,7 @@ namespace Drv {
     //printf("Action for Read ERROR\n");
 
     this->clearHistory();
-    
+
     U8 data[8] = {0};
     U32 addr = 0x20000000;
     this->invoke_to_read_block(0, data, addr, 8, 0);
@@ -89,32 +89,32 @@ namespace Drv {
     //null ptr
     U8* null_data = NULL;
     ASSERT_DEATH({this->invoke_to_read_block(0, null_data, addr, 8, 0);
-                  this->component.doDispatch();},                                                                                      
-                  "Assertion `0' failed.");
+                  this->component.doDispatch();},
+                  "Assertion");
 
     //invalid bank
     ASSERT_DEATH({this->invoke_to_read_block(0, data, addr, 8, 5);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
+                  "Assertion");
 
     ASSERT_DEATH({this->invoke_to_read_block(0, data, addr, 50000, 0);
-                  this->component.doDispatch();},                       
-                  "Assertion `0' failed.");
+                  this->component.doDispatch();},
+                  "Assertion");
 
   }
 
   namespace Read {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-    
+    // ----------------------------------------------------------------------
+
     void Tester ::
       OK(void)
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)
