@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Write.cpp
 // \author ciankc
 // \brief  Rules/Write class implementation
@@ -13,9 +13,9 @@
 #include "Write.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Write__OK(void) const
@@ -34,7 +34,7 @@ namespace Drv {
     action__Write__OK(void)
   {
     //printf("Action for Write OK\n");
-    
+
     //returns timer number for all 4 timers
     U32 val = 0;
     U32 wval = 0xCC;
@@ -72,13 +72,13 @@ namespace Drv {
 
     //should fail with invalid timer
     ASSERT_DEATH({this->invoke_to_gPTimerDriver_WriteControl(0,4,0);},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
     ASSERT_DEATH({this->invoke_to_gPTimerDriver_WriteCounter(0,4,0);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     ASSERT_DEATH({this->invoke_to_gPTimerDriver_WriteReload(0,4,0);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
   }
 
@@ -129,23 +129,23 @@ namespace Drv {
 	        timer2Reserved, timer2UsrConfig, timer2CntReg, timer2RldReg, timer2CtlReg,
 	        timer3Reserved, timer3UsrConfig, timer3CntReg, timer3RldReg, timer3CtlReg,
 	        timer4Reserved, timer4UsrConfig, timer4CntReg, timer4RldReg, timer4CtlReg)
-           
+
     {
 
     }
 
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-    
+    // ----------------------------------------------------------------------
+
     void Tester ::
       OK(void)
     {
       //apply rule
       this->ownerTester.ruleClaimOK.apply(this->testState);
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)

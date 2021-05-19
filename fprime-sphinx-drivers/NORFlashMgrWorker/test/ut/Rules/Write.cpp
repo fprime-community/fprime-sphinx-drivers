@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Write.cpp
 // \author ciankc
 // \brief  Rules/Write class implementation
@@ -14,9 +14,9 @@
 #include "Write.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Write__OK(void) const
@@ -39,17 +39,17 @@ namespace Drv {
     U32 addr = 0x00001000;
     U32 mark = 0xDEADBEEF;
     U32 mark2 = 0x12345678;
-    
+
     //clear out registers to begin with
     writeReg(addr, 0x0);
     writeReg(addr+4, 0x0);
-    
+
     this->invoke_to_write_block(0, addr, data, 8, 0);
     this->component.doDispatch();
 
     ASSERT_EQ(readReg(addr), mark);
     ASSERT_EQ(readReg(addr+0x4), mark2);
-    
+
   }
 
   bool TestState ::
@@ -65,7 +65,7 @@ namespace Drv {
     action__Write__ERROR(void)
   {
     //printf("Action for Write ERROR\n");
-    
+
     this->clearHistory();
 
     //check for error in statusOut
@@ -74,35 +74,35 @@ namespace Drv {
     this->invoke_to_write_block(0, addr, data, 4, 0);
     this->component.doDispatch();
 
-    //null ptr                                                                                                                                                
-    U8* null_data = NULL;                                                                                                                                     
-    ASSERT_DEATH({this->invoke_to_write_block(0, addr, null_data, 4, 0); 
-        this->component.doDispatch();},                                                                                                             
-      "Assertion `0' failed.");                                                                                                                   
-                                                                                                                                                              
-    //invalid bank                                                                                                                                            
-    ASSERT_DEATH({this->invoke_to_write_block(0, addr, data, 4, 5);                                                                                            
-        this->component.doDispatch();},                                                                                                             
-      "Assertion `0' failed.");                                                                                                                   
-                                                                                                                                                              
-    ASSERT_DEATH({this->invoke_to_write_block(0, addr, data, 50000, 0);   
-        this->component.doDispatch();},                                                                                                             
-      "Assertion `0' failed.");  
+    //null ptr
+    U8* null_data = NULL;
+    ASSERT_DEATH({this->invoke_to_write_block(0, addr, null_data, 4, 0);
+        this->component.doDispatch();},
+      "Assertion");
+
+    //invalid bank
+    ASSERT_DEATH({this->invoke_to_write_block(0, addr, data, 4, 5);
+        this->component.doDispatch();},
+      "Assertion");
+
+    ASSERT_DEATH({this->invoke_to_write_block(0, addr, data, 50000, 0);
+        this->component.doDispatch();},
+      "Assertion");
   }
 
 
   namespace Write {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
+    // ----------------------------------------------------------------------
 
     void Tester ::
       OK(void)
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)

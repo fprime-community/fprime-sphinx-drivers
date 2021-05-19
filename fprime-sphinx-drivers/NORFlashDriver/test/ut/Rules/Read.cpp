@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Read.cpp
 // \author ciankc
 // \brief  Rules/Read class implementation
@@ -13,9 +13,9 @@
 #include "Read.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Read__OK(void) const
@@ -34,7 +34,7 @@ namespace Drv {
     U32 addr = 0x00000000;
     //read one byte
     U8 data[1] = {0};
-    
+
     U32 status = this->invoke_to_read(0, addr, data);
     ASSERT_EQ(status, 1);
 
@@ -53,18 +53,18 @@ namespace Drv {
     action__Read__ERROR(void)
   {
     //printf("Action for Read ERROR\n");
-    
+
     U32 addr = 0x00000000;
     //read one byte
-    U8 data[1] = {0};                       
- 
-    //Check null read ptr                                                                      
+    U8 data[1] = {0};
+
+    //Check null read ptr
     U8* null_read_buf = NULL;
     ASSERT_DEATH({this->invoke_to_read(0, addr, null_read_buf);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //Check invalid address
-    U32 invalid_address = 0x20000001;   
+    U32 invalid_address = 0x20000001;
     U32 status = this->invoke_to_read(0, invalid_address, data);
     ASSERT_EQ(status, 1);
 
@@ -73,16 +73,16 @@ namespace Drv {
 
   namespace Read {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-    
+    // ----------------------------------------------------------------------
+
     void Tester ::
       OK(void)
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)

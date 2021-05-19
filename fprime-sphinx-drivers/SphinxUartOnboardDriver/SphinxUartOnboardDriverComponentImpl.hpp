@@ -19,7 +19,7 @@
 
 #ifdef TGT_OS_TYPE_VXWORKS
 extern "C" {
-#include <intLib.h>
+#include <spinLockLib.h>
 #include <iv.h>
 }
 #endif
@@ -377,6 +377,9 @@ namespace Drv {
       U32 m_address;                // Register memory address
       RegisterType m_registerType;  // Register type: hardware or firmware
 
+      #ifdef TGT_OS_TYPE_VXWORKS
+        spinLockIsr_t m_read_buf_lock;
+      #endif
     };
 
     void UARTHWintHandler

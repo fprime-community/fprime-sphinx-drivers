@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/ReadWrite.cpp
 // \author ciankc
 // \brief  Rules/ReadWrite class implementation
@@ -14,9 +14,9 @@
 #include "ReadWrite.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__ReadWrite__OK(void) const
@@ -42,15 +42,15 @@ namespace Drv {
     U8 bit_order = 0;
     U32 delay_timeout = 1;
     U32 delay = 0;
-    
+
     this->setTestTime(Fw::Time(1, 100));
-    
+
     //Should correctly time out when counter < bound
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, nBytes, activate_slave,
 				     timeout, clock_bitrate, bit_order, delay_timeout);},
-                 "Assertion `0' failed.");
-    
+                 "Assertion");
+
     U32 status = this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, nBytes, activate_slave,
 				    timeout, clock_bitrate, bit_order, delay);
@@ -81,58 +81,58 @@ namespace Drv {
     U8 clock_bitrate = FPGA_SPI_BITRATE_10_MBS;
     U8 bit_order = 0;
     U32 delay = 0;
-    
+
     //Check null write ptr
     U8* null_write_buf = NULL;
     ASSERT_DEATH({this->invoke_to_read_write(portNum, null_write_buf,
                                             read_buf, nBytes, activate_slave,
 				     timeout, clock_bitrate, bit_order, delay);},
-                 "Assertion `0' failed.");
-    
+                 "Assertion");
+
     //Check null read ptr
     U8* null_read_buf = NULL;
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
 				     null_read_buf, nBytes, activate_slave,
 				     timeout, clock_bitrate, bit_order, delay);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //Check max nbytes
     U32 invalid_nBytes = (FPGA_SPI_MAX_BYTES_PER_TRANSACTION+1);
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, invalid_nBytes, activate_slave,
 				     timeout, clock_bitrate, bit_order, delay);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //Check clock_br, 4 is invalid
     U8 invalid_bit_rate = 4;
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, nBytes, activate_slave,
 				     timeout, invalid_bit_rate, bit_order, delay);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //Check bit order, 2 is invalid
     U8 invalid_bit_order = 2;
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, nBytes, activate_slave,
 				     timeout, clock_bitrate, invalid_bit_order, delay);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //Check delay value, max is 1000000
     U32 invalid_delay = 1000001;
     ASSERT_DEATH({this->invoke_to_read_write(portNum, write_buf,
                                             read_buf, nBytes, activate_slave,
 				     timeout, clock_bitrate, bit_order, invalid_delay);},
-                 "Assertion `0' failed.");
-    
+                 "Assertion");
+
   }
 
 
   namespace ReadWrite {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-       
+    // ----------------------------------------------------------------------
+
     Tester :: Tester(const char* compName,
 		     U32 spiNumber,
                          U32 spiWidth)
@@ -140,13 +140,13 @@ namespace Drv {
     {
 
     }
-    
+
     void Tester ::
       OK(void)
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)

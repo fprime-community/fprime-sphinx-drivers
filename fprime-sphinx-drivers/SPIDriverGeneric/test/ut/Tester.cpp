@@ -32,21 +32,6 @@ namespace Drv {
   {
     this->initComponents();
     this->connectPorts();
-
-    //initial register values, set as desired
-    SphinxDrvReg::fileEntry fileRegs[] = {
-        {0, SPI_CTRL_MODE_REG},
-        {13, SPI_CTRL_EVT_REG},
-        {21, SPI_CMD_REG},
-        {17,SPI_TX_REG},
-        {6, SPI_RX_REG}
-    };
-
-    //currently set to zero to not interfere with other reads/writes
-    //change to 5 to initialize the above register with values
-    SphinxDrvReg regData(fileRegs, 0);
-    regData.writeFile();
-
   }
 
    //alternate constructor
@@ -88,19 +73,6 @@ namespace Drv {
   {
     this->initComponents();
     this->connectPorts();
-
-    //initial register values
-    SphinxDrvReg::fileEntry fileRegs[] = {
-      {0, 0x80000420},
-      {13, 0x80000424},
-      {21, 0x80000430},
-      {17,0x80000434}
-    };
-
-    //currently set to zero to not interfere with other reads/writes
-    SphinxDrvReg regData(fileRegs, 0);
-    regData.writeFile();
-
   }
 
   Tester ::

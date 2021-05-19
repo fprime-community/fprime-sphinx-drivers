@@ -133,13 +133,8 @@ namespace Drv {
       
   TEST(Reset, OK) {
     Reset::Tester tester;
-    tester.OK(); 
-  } 
-
-  TEST(Teardown, OK) {
-    SphinxDrvReg::clearFiles();
+    tester.OK();
   }
-  
 }
 
 int main(int argc, char **argv) {

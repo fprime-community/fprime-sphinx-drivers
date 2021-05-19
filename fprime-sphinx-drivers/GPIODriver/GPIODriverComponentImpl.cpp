@@ -63,7 +63,7 @@ namespace Drv {
         NATIVE_UINT_TYPE n_pin_pol,
         NATIVE_UINT_TYPE pin_edge[],
         NATIVE_UINT_TYPE n_pin_edge,
-        GPIOInterruptRouter * int_router, 
+        GPIOInterruptRouter * int_router,
         U32 flag
       )
   {
@@ -274,7 +274,7 @@ namespace Drv {
 
     // Adjust pin_num before read-back verification
     if (second_bank) {
-      pin_num += (SPHINX_MAX_NUM_GPIOs/2); 
+      pin_num += (SPHINX_MAX_NUM_GPIOs/2);
     }
 
     // Verify pin value by read-back
@@ -326,7 +326,7 @@ namespace Drv {
 
     // Adjust pin_num before read-back verification
     if (second_bank) {
-      pin_num += (SPHINX_MAX_NUM_GPIOs/2); 
+      pin_num += (SPHINX_MAX_NUM_GPIOs/2);
     }
 
     // Verify pin value by read-back
@@ -337,30 +337,24 @@ namespace Drv {
         return 0;
       }
     }
-    
+
     // Failed to clear pin
     return -1;
   }
 
 
   // Function called by all GPIO interrupt vectors
-  void 
+  void
   #ifdef TGT_OS_TYPE_VXWORKS
     GPIOintHandler_Master(I32 arg, GPIOInterruptRouter::GPIOIntNum int_num)
   #else
     GPIOintHandler_Master(I64 arg, GPIOInterruptRouter::GPIOIntNum int_num)
   #endif
   {
-    #ifdef TGT_OS_TYPE_VXWORKS
-        I32 lock_key = intLock();
-    #endif
       GPIODriverComponentImpl* comp_ptr = reinterpret_cast<Drv::GPIODriverComponentImpl*>(arg);
       FW_ASSERT(comp_ptr != NULL);
       FW_ASSERT(comp_ptr->m_intRouter_p != NULL);
       comp_ptr->m_intRouter_p->RouteInterrupt(int_num);
-    #ifdef TGT_OS_TYPE_VXWORKS
-        intUnlock(lock_key);
-    #endif
   }
 
 
@@ -381,7 +375,7 @@ namespace Drv {
     void GPIOintHandler_13(I32 arg) {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_13);}
     void GPIOintHandler_14(I32 arg) {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_14);}
     void GPIOintHandler_15(I32 arg) {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_15);}
-  #else 
+  #else
     void GPIOintHandler_1(I64 arg)  {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_1);}
     void GPIOintHandler_2(I64 arg)  {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_2);}
     void GPIOintHandler_3(I64 arg)  {GPIOintHandler_Master(arg, GPIOInterruptRouter::GPIO_INT_3);}

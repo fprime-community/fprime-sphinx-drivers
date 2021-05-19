@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Reader.cpp
 // \author ciankc
 // \brief  Rules/Reader class implementation
@@ -14,9 +14,9 @@
 #include "Reader.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Reader__TIMEOUT(void) const
@@ -91,7 +91,7 @@ namespace Drv {
     ASSERT_EQ(this->component.m_address, REG_PORT_2);
     ASSERT_EQ(this->component.m_registerType, 2); //2 = RegisterType_FIRMWARE
     ASSERT_EQ(readReg(this->component.m_address + REG_OFF_FW_BAUD_RATE), 0x2);
-    
+
     //read fw
     this->component.m_read_buf_rp = 1;
     writeReg(this->component.m_address + REG_OFF_FW_STATUS, 0);
@@ -147,7 +147,7 @@ namespace Drv {
 
     U8* data = NULL;
     ASSERT_DEATH({this->invoke_to_read(0, data, 1, 100);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
   }
 
@@ -189,7 +189,7 @@ namespace Drv {
 
     U8 data[5] = {1,2,3,4,5};
     U32 status;
-    
+
     writeReg(this->component.m_address + REG_OFF_HW_STATUS, HW_STAT_RCNT);
     status = this->invoke_to_read(0, data, 5, 100);
     ASSERT_EQ(status, 0);
@@ -211,7 +211,7 @@ namespace Drv {
     //printf("Action for Reader ERROR\n");
     // Initialize test state
     this->clearHistory();
-    
+
     U8 data[5] = {1,2,3,4,5};
     U32 status;
 
@@ -238,9 +238,9 @@ namespace Drv {
 
   namespace Reader {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
 
     void Tester ::
       TIMEOUT(void)

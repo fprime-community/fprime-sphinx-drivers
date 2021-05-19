@@ -28,11 +28,6 @@ namespace Drv {
     Time::Tester tester;
     tester.ERROR();
   }
-  
-  TEST(Teardown, OK) {
-    Drv::SphinxDrvReg::clearFiles();
-  }
-
 }
 
 int main(int argc, char **argv) {

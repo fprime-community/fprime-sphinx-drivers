@@ -18,12 +18,20 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifndef TGT_OS_TYPE_VXWORKS
+#include <map>
+#endif
+
 #define U32_MAX (0xffffffff)
 #define I32_MAX (0x7fffffff)
 #define I32_MIN (0x80000000)
 #define BITS_PER_BYTE 8
 
 namespace Drv {
+#ifndef TGT_OS_TYPE_VXWORKS
+  /* Emulated register memory for unit tests */
+  extern std::map<U32, U32> emuRegMap;
+#endif
 
   /**
    * type manipulation functions

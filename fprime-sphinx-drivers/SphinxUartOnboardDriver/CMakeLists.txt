@@ -15,7 +15,6 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Sphinx-VxWorks6")
 endif()
 register_fprime_module()
 set(UT_MOD_DEPS
-        fprime-sphinx-drivers/Util/LinuxDrvReg
         fprime-sphinx-drivers/Random
         fprime-sphinx-drivers/Util
         fprime-sphinx-drivers/Ports/SphinxUart_bytesUsedPort

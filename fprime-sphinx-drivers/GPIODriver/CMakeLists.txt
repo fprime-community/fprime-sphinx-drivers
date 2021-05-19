@@ -10,7 +10,6 @@ set(MOD_DEPS
 register_fprime_module()
 set(UT_MOD_DEPS
         fprime-sphinx-drivers/Random
-        fprime-sphinx-drivers/Util/LinuxDrvReg
         fprime-sphinx-drivers/Util
         fprime-sphinx-drivers/GPIOInterruptRouter
         fprime-sphinx-drivers/Os

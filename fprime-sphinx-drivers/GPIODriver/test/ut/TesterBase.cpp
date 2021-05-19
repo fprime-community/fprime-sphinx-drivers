@@ -61,7 +61,7 @@ namespace Drv {
       this->m_to_gpio_readPin[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -84,7 +84,7 @@ namespace Drv {
       this->m_to_gpio_setPin[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -107,7 +107,7 @@ namespace Drv {
       this->m_to_gpio_clearPin[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),

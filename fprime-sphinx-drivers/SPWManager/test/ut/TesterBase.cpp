@@ -66,7 +66,7 @@ namespace Drv {
   }
 
   SPWManagerTesterBase ::
-    ~SPWManagerTesterBase(void) 
+    ~SPWManagerTesterBase(void)
   {
     // Destroy command history
     delete this->cmdResponseHistory;
@@ -108,7 +108,7 @@ namespace Drv {
       this->m_from_driverWriteRMAP[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -137,7 +137,7 @@ namespace Drv {
       this->m_from_cmdRegOut[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -166,7 +166,7 @@ namespace Drv {
       this->m_from_statusOut[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -195,7 +195,7 @@ namespace Drv {
       this->m_from_eventOut[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -224,7 +224,7 @@ namespace Drv {
       this->m_from_PingResponse[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -253,7 +253,7 @@ namespace Drv {
       this->m_from_cmdResponseOut[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -282,7 +282,7 @@ namespace Drv {
       this->m_from_driverReset[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -311,7 +311,7 @@ namespace Drv {
       this->m_from_driverReadRMAP[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -340,7 +340,7 @@ namespace Drv {
       this->m_from_timeCaller[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -369,7 +369,7 @@ namespace Drv {
       this->m_from_driverGetStatus[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -399,7 +399,7 @@ namespace Drv {
       this->m_from_LogText[_port].setPortNum(_port);
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       (void) snprintf(
           _portName,
           sizeof(_portName),
@@ -423,7 +423,7 @@ namespace Drv {
       this->m_to_read[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -446,7 +446,7 @@ namespace Drv {
       this->m_to_readAsyncDMA[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -469,7 +469,7 @@ namespace Drv {
       this->m_to_setParam[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -492,7 +492,7 @@ namespace Drv {
       this->m_to_PingRecv[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -515,7 +515,7 @@ namespace Drv {
       this->m_to_writeAsync[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -538,7 +538,7 @@ namespace Drv {
       this->m_to_resetLink[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -561,7 +561,7 @@ namespace Drv {
       this->m_to_schedIn[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -584,7 +584,7 @@ namespace Drv {
       this->m_to_write[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -607,7 +607,7 @@ namespace Drv {
       this->m_to_readAsync[_port].init();
 
 #if FW_OBJECT_NAMES == 1
-      char _portName[80];
+      char _portName[128];
       snprintf(
           _portName,
           sizeof(_portName),
@@ -755,14 +755,14 @@ namespace Drv {
 #endif
 
   // ----------------------------------------------------------------------
-  // Connectors for to ports 
+  // Connectors for to ports
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     connect_to_read(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SendRequestPort *const read
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_read(),static_cast<AssertArg>(portNum));
     this->m_to_read[portNum].addCallPort(read);
@@ -772,7 +772,7 @@ namespace Drv {
     connect_to_readAsyncDMA(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SendRequestPort *const readAsyncDMA
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_readAsyncDMA(),static_cast<AssertArg>(portNum));
     this->m_to_readAsyncDMA[portNum].addCallPort(readAsyncDMA);
@@ -782,7 +782,7 @@ namespace Drv {
     connect_to_setParam(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SetParamPort *const setParam
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_setParam(),static_cast<AssertArg>(portNum));
     this->m_to_setParam[portNum].addCallPort(setParam);
@@ -792,7 +792,7 @@ namespace Drv {
     connect_to_PingRecv(
         const NATIVE_INT_TYPE portNum,
         Svc::InputPingPort *const PingRecv
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_PingRecv(),static_cast<AssertArg>(portNum));
     this->m_to_PingRecv[portNum].addCallPort(PingRecv);
@@ -802,7 +802,7 @@ namespace Drv {
     connect_to_writeAsync(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SendRequestPort *const writeAsync
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_writeAsync(),static_cast<AssertArg>(portNum));
     this->m_to_writeAsync[portNum].addCallPort(writeAsync);
@@ -812,7 +812,7 @@ namespace Drv {
     connect_to_resetLink(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_TriggerPort *const resetLink
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_resetLink(),static_cast<AssertArg>(portNum));
     this->m_to_resetLink[portNum].addCallPort(resetLink);
@@ -822,7 +822,7 @@ namespace Drv {
     connect_to_schedIn(
         const NATIVE_INT_TYPE portNum,
         Svc::InputSchedPort *const schedIn
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_schedIn(),static_cast<AssertArg>(portNum));
     this->m_to_schedIn[portNum].addCallPort(schedIn);
@@ -832,7 +832,7 @@ namespace Drv {
     connect_to_cmdIn(
         const NATIVE_INT_TYPE portNum,
         Fw::InputCmdPort *const cmdIn
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_cmdIn(),static_cast<AssertArg>(portNum));
     this->m_to_cmdIn[portNum].addCallPort(cmdIn);
@@ -842,7 +842,7 @@ namespace Drv {
     connect_to_write(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SendRequestPort *const write
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_write(),static_cast<AssertArg>(portNum));
     this->m_to_write[portNum].addCallPort(write);
@@ -852,7 +852,7 @@ namespace Drv {
     connect_to_readAsync(
         const NATIVE_INT_TYPE portNum,
         Drv::InputSphinxSPW_SendRequestPort *const readAsync
-    ) 
+    )
   {
     FW_ASSERT(portNum < this->getNum_to_readAsync(),static_cast<AssertArg>(portNum));
     this->m_to_readAsync[portNum].addCallPort(readAsync);
@@ -952,7 +952,7 @@ namespace Drv {
     FW_ASSERT(portNum < this->getNum_to_resetLink(),static_cast<AssertArg>(portNum));
     FW_ASSERT(portNum < this->getNum_to_resetLink(),static_cast<AssertArg>(portNum));
     this->m_to_resetLink[portNum].invoke(
-        
+
     );
   }
 
@@ -1080,7 +1080,7 @@ namespace Drv {
   // ----------------------------------------------------------------------
   // Getters for from ports
   // ----------------------------------------------------------------------
- 
+
   Drv::InputSphinxSPW_WriteRMAPPort *SPWManagerTesterBase ::
     get_from_driverWriteRMAP(const NATIVE_INT_TYPE portNum)
   {
@@ -1179,7 +1179,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     return _testerBase->from_driverWriteRMAP_handlerBase(
         portNum,
@@ -1195,7 +1195,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     _testerBase->from_statusOut_handlerBase(
         portNum,
@@ -1211,7 +1211,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     _testerBase->from_PingResponse_handlerBase(
         portNum,
@@ -1226,7 +1226,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     return _testerBase->from_driverReset_handlerBase(portNum);
   }
@@ -1244,7 +1244,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     return _testerBase->from_driverReadRMAP_handlerBase(
         portNum,
@@ -1259,7 +1259,7 @@ namespace Drv {
     )
   {
     FW_ASSERT(callComp);
-    SPWManagerTesterBase* _testerBase = 
+    SPWManagerTesterBase* _testerBase =
       static_cast<SPWManagerTesterBase*>(callComp);
     return _testerBase->from_driverGetStatus_handlerBase(portNum);
   }
@@ -1348,9 +1348,9 @@ namespace Drv {
     this->fromPortHistorySize_driverGetStatus = 0;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: driverWriteRMAP
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_driverWriteRMAP(
@@ -1371,9 +1371,9 @@ namespace Drv {
     ++this->fromPortHistorySize;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: statusOut
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_statusOut(
@@ -1387,9 +1387,9 @@ namespace Drv {
     ++this->fromPortHistorySize;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: PingResponse
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_PingResponse(
@@ -1403,9 +1403,9 @@ namespace Drv {
     ++this->fromPortHistorySize;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: driverReset
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_driverReset(
@@ -1416,9 +1416,9 @@ namespace Drv {
     ++this->fromPortHistorySize;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: driverReadRMAP
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_driverReadRMAP(
@@ -1437,9 +1437,9 @@ namespace Drv {
     ++this->fromPortHistorySize;
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // From port: driverGetStatus
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     pushFromPortEntry_driverGetStatus(
@@ -1551,9 +1551,9 @@ namespace Drv {
     this->cmdResponseHistory->push_back(e);
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Command: SPWMGR_RMAP_WRITE_WORD
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     sendCmd_SPWMGR_RMAP_WRITE_WORD(
@@ -1577,7 +1577,7 @@ namespace Drv {
     FW_ASSERT(_status == Fw::FW_SERIALIZE_OK,static_cast<AssertArg>(_status));
 
     // Call output command port
-    
+
     FwOpcodeType _opcode;
     const U32 idBase = this->getIdBase();
     _opcode = SPWManagerComponentBase::OPCODE_SPWMGR_RMAP_WRITE_WORD + idBase;
@@ -1595,9 +1595,9 @@ namespace Drv {
 
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Command: SPWMGR_RMAP_READ_WORD
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     sendCmd_SPWMGR_RMAP_READ_WORD(
@@ -1618,7 +1618,7 @@ namespace Drv {
     FW_ASSERT(_status == Fw::FW_SERIALIZE_OK,static_cast<AssertArg>(_status));
 
     // Call output command port
-    
+
     FwOpcodeType _opcode;
     const U32 idBase = this->getIdBase();
     _opcode = SPWManagerComponentBase::OPCODE_SPWMGR_RMAP_READ_WORD + idBase;
@@ -1636,9 +1636,9 @@ namespace Drv {
 
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Command: SPWMGR_RESET_LINK
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     sendCmd_SPWMGR_RESET_LINK(
@@ -1652,7 +1652,7 @@ namespace Drv {
     Fw::CmdArgBuffer buff;
 
     // Call output command port
-    
+
     FwOpcodeType _opcode;
     const U32 idBase = this->getIdBase();
     _opcode = SPWManagerComponentBase::OPCODE_SPWMGR_RESET_LINK + idBase;
@@ -1670,9 +1670,9 @@ namespace Drv {
 
   }
 
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Command: SPWMGR_SET_PARAMS
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
     sendCmd_SPWMGR_SET_PARAMS(
@@ -1702,7 +1702,7 @@ namespace Drv {
     FW_ASSERT(_status == Fw::FW_SERIALIZE_OK,static_cast<AssertArg>(_status));
 
     // Call output command port
-    
+
     FwOpcodeType _opcode;
     const U32 idBase = this->getIdBase();
     _opcode = SPWManagerComponentBase::OPCODE_SPWMGR_SET_PARAMS + idBase;
@@ -1720,11 +1720,11 @@ namespace Drv {
 
   }
 
-  
+
   void SPWManagerTesterBase ::
     sendRawCmd(FwOpcodeType opcode, U32 cmdSeq, Fw::CmdArgBuffer& args) {
-       
-    const U32 idBase = this->getIdBase();   
+
+    const U32 idBase = this->getIdBase();
     FwOpcodeType _opcode = opcode + idBase;
     if (this->m_to_cmdIn[0].isConnected()) {
       this->m_to_cmdIn[0].invoke(
@@ -1736,11 +1736,11 @@ namespace Drv {
     else {
       printf("Test Command Output port not connected!\n");
     }
-        
+
   }
-  
+
   // ----------------------------------------------------------------------
-  // History 
+  // History
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -1781,7 +1781,7 @@ namespace Drv {
     FW_ASSERT(id >= idBase, id, idBase);
     switch (id - idBase) {
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIREINITIALIZATIONERROR: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIREINITIALIZATIONERROR:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -1795,8 +1795,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 1,_numArgs,1);
-        
-#endif    
+
+#endif
         I32 status;
 #if FW_AMPCS_COMPATIBLE
         {
@@ -1809,7 +1809,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(I32),_argSize,sizeof(I32));
         }
-#endif      
+#endif
         _status = args.deserialize(status);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -1822,7 +1822,7 @@ namespace Drv {
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIRELINKDISCONNECTED: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIRELINKDISCONNECTED:
       {
 
 #if FW_AMPCS_COMPATIBLE
@@ -1834,14 +1834,14 @@ namespace Drv {
             _zero_status == Fw::FW_SERIALIZE_OK,
             static_cast<AssertArg>(_zero_status)
         );
-#endif    
+#endif
         this->logIn_WARNING_HI_SPWManager_SpaceWireLinkDisconnected();
 
         break;
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIREERROR: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIREERROR:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -1855,8 +1855,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 2,_numArgs,2);
-        
-#endif    
+
+#endif
 #if FW_AMPCS_COMPATIBLE
         {
           // Deserialize the argument size
@@ -1868,7 +1868,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(FwEnumStoreType),_argSize,sizeof(FwEnumStoreType));
         }
-#endif      
+#endif
         FwEnumStoreType statusInt;
         _status = args.deserialize(statusInt);
         SPWManagerComponentBase::SpaceWireError_status status = static_cast<SPWManagerComponentBase::SpaceWireError_status>(statusInt);
@@ -1889,7 +1889,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(I32),_argSize,sizeof(I32));
         }
-#endif      
+#endif
         _status = args.deserialize(statusCode);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -1902,7 +1902,7 @@ namespace Drv {
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIRETRANSACTIONTIMEOUT: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_SPACEWIRETRANSACTIONTIMEOUT:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -1916,8 +1916,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 4,_numArgs,4);
-        
-#endif    
+
+#endif
         U32 timeout;
 #if FW_AMPCS_COMPATIBLE
         {
@@ -1930,7 +1930,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(timeout);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -1948,7 +1948,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(FwEnumStoreType),_argSize,sizeof(FwEnumStoreType));
         }
-#endif      
+#endif
         FwEnumStoreType commandInt;
         _status = args.deserialize(commandInt);
         SPWManagerComponentBase::SpaceWireTransactionTimeout_command command = static_cast<SPWManagerComponentBase::SpaceWireTransactionTimeout_command>(commandInt);
@@ -1969,7 +1969,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(address);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -1987,7 +1987,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(FwEnumStoreType),_argSize,sizeof(FwEnumStoreType));
         }
-#endif      
+#endif
         FwEnumStoreType statusInt;
         _status = args.deserialize(statusInt);
         SPWManagerComponentBase::SpaceWireTransactionTimeout_status status = static_cast<SPWManagerComponentBase::SpaceWireTransactionTimeout_status>(statusInt);
@@ -2002,7 +2002,7 @@ namespace Drv {
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RMAPWRITERESULT: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RMAPWRITERESULT:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -2016,8 +2016,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 1,_numArgs,1);
-        
-#endif    
+
+#endif
         U32 address;
 #if FW_AMPCS_COMPATIBLE
         {
@@ -2030,7 +2030,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(address);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -2043,7 +2043,7 @@ namespace Drv {
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RMAPREADRESULT: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RMAPREADRESULT:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -2057,8 +2057,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 2,_numArgs,2);
-        
-#endif    
+
+#endif
         U32 address;
 #if FW_AMPCS_COMPATIBLE
         {
@@ -2071,7 +2071,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(address);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -2090,7 +2090,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(value);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -2103,7 +2103,7 @@ namespace Drv {
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_BUSY: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_BUSY:
       {
 
 #if FW_AMPCS_COMPATIBLE
@@ -2115,14 +2115,14 @@ namespace Drv {
             _zero_status == Fw::FW_SERIALIZE_OK,
             static_cast<AssertArg>(_zero_status)
         );
-#endif    
+#endif
         this->logIn_WARNING_LO_SPWManager_Busy();
 
         break;
 
       }
 
-      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RESETLINK: 
+      case SPWManagerComponentBase::EVENTID_SPWMANAGER_RESETLINK:
       {
 
         Fw::SerializeStatus _status = Fw::FW_SERIALIZE_OK;
@@ -2136,8 +2136,8 @@ namespace Drv {
         );
         // verify they match expected.
         FW_ASSERT(_numArgs == 1,_numArgs,1);
-        
-#endif    
+
+#endif
         U32 numAborted;
 #if FW_AMPCS_COMPATIBLE
         {
@@ -2150,7 +2150,7 @@ namespace Drv {
           );
           FW_ASSERT(_argSize == sizeof(U32),_argSize,sizeof(U32));
         }
-#endif      
+#endif
         _status = args.deserialize(numAborted);
         FW_ASSERT(
             _status == Fw::FW_SERIALIZE_OK,
@@ -2189,7 +2189,7 @@ namespace Drv {
 #if FW_ENABLE_TEXT_LOGGING
 
   // ----------------------------------------------------------------------
-  // Text events 
+  // Text events
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2252,11 +2252,11 @@ namespace Drv {
   }
 
   void SPWManagerTesterBase ::
-    printTextLogHistory(FILE *file) 
+    printTextLogHistory(FILE *file)
   {
     for (U32 i = 0; i < this->textLogHistory->size(); ++i) {
       this->printTextLogHistoryEntry(
-          this->textLogHistory->at(i), 
+          this->textLogHistory->at(i),
           file
       );
     }
@@ -2265,7 +2265,7 @@ namespace Drv {
 #endif
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_SpaceWireInitializationError 
+  // Event: SPWManager_SpaceWireInitializationError
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2281,7 +2281,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_SpaceWireLinkDisconnected 
+  // Event: SPWManager_SpaceWireLinkDisconnected
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2294,7 +2294,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_SpaceWireError 
+  // Event: SPWManager_SpaceWireError
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2311,7 +2311,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_SpaceWireTransactionTimeout 
+  // Event: SPWManager_SpaceWireTransactionTimeout
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2330,7 +2330,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_RMAPWriteResult 
+  // Event: SPWManager_RMAPWriteResult
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2346,7 +2346,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_RMAPReadResult 
+  // Event: SPWManager_RMAPReadResult
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2363,7 +2363,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_Busy 
+  // Event: SPWManager_Busy
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::
@@ -2376,7 +2376,7 @@ namespace Drv {
   }
 
   // ----------------------------------------------------------------------
-  // Event: SPWManager_ResetLink 
+  // Event: SPWManager_ResetLink
   // ----------------------------------------------------------------------
 
   void SPWManagerTesterBase ::

@@ -40,9 +40,12 @@ namespace Drv {
     this->m_read_buf_wp = 0;
     this->m_read_buf_rp = 0;
     this->m_control = 0x00;
+    #ifdef TGT_OS_TYPE_VXWORKS
+    SPIN_LOCK_ISR_INIT(&this->m_read_buf_lock, 0);
+    #endif
 
     // Initialize members with HARDWARE UART PORT 0
-    // by default in constructor. 
+    // by default in constructor.
     // Other UART ports configured via init_comp()
     this->m_address = REG_PORT_0;
     this->m_registerType = RegisterType_HARDWARE;
@@ -615,7 +618,7 @@ void SphinxUartOnboardDriverComponentImpl :: setup_port(U8 portNum) {
 
     // Read all available bytes from UART Fifo and stores
     // them on circular buffer. Locks all interrupts.
-    comp_ptr->lock_read_fifo();
+    comp_ptr->read_fifo();
   }
 
 
@@ -623,26 +626,15 @@ void SphinxUartOnboardDriverComponentImpl :: setup_port(U8 portNum) {
     this->read_fifo();
   }
 
-
-  void SphinxUartOnboardDriverComponentImpl :: lock_read_fifo(void)
-  {
-    // Lock all interrupts
-    #ifdef TGT_OS_TYPE_VXWORKS
-    I32 lock_key = intLock();
-    #endif
-
-    read_fifo();
-
-    // unlock interrupts
-    #ifdef TGT_OS_TYPE_VXWORKS
-    intUnlock(lock_key);
-    #endif
-  }
-
-
   void SphinxUartOnboardDriverComponentImpl :: read_fifo(void)
   {
     U8 lpCnt;
+    bool wrapped = false;
+
+    #ifdef TGT_OS_TYPE_VXWORKS
+    SPIN_LOCK_ISR_TAKE(&this->m_read_buf_lock);
+    #endif
+
     // Copy contents of receive FIFO into read buf while RX FIFO is not empty;
     // Necessary because interrupts are disabled, thus can be missed, so there
     // may be more than one byte available in the RX FIFO
@@ -650,8 +642,16 @@ void SphinxUartOnboardDriverComponentImpl :: setup_port(U8 portNum) {
       this->m_read_buf[this->m_read_buf_wp] = this->pull_byte();
       this->m_read_buf_wp = (this->m_read_buf_wp + 1) % READ_BUF_SIZE;
       if (this->m_read_buf_wp == this->m_read_buf_rp){
-        this->log_WARNING_HI_UOBD_BUFF_WRAP();
+        wrapped = true;
       }
+    }
+
+    #ifdef TGT_OS_TYPE_VXWORKS
+    SPIN_LOCK_ISR_GIVE(&this->m_read_buf_lock);
+    #endif
+
+    if(wrapped) {
+      this->log_WARNING_HI_UOBD_BUFF_WRAP();
     }
   }
 
@@ -688,7 +688,7 @@ void SphinxUartOnboardDriverComponentImpl :: setup_port(U8 portNum) {
     // read_buf_ptr is NULL. Allows user to reset read buffer without
     // an additional port
     if (nBytes == 0){
-      this->lock_read_fifo();
+      this->read_fifo();
       this->m_read_buf_rp = this->m_read_buf_wp;
       return result;
     }
@@ -700,16 +700,24 @@ void SphinxUartOnboardDriverComponentImpl :: setup_port(U8 portNum) {
       do {
         //// Check for any bytes left in FIFO ////
         if (!this->is_rx_empty()){
-          this->lock_read_fifo();
+          this->read_fifo();
         }
 
-       //// Hardware/Firmware Read ////
+        #ifdef TGT_OS_TYPE_VXWORKS
+        SPIN_LOCK_ISR_TAKE(&this->m_read_buf_lock);
+        #endif
+
+        //// Hardware/Firmware Read ////
         if (temp_buf_rp != this->m_read_buf_wp){
           *(read_buf_ptr++) = this->m_read_buf[temp_buf_rp];
           temp_buf_rp = (temp_buf_rp + 1) % READ_BUF_SIZE;
           bytesRead++;
           break;
         }
+
+        #ifdef TGT_OS_TYPE_VXWORKS
+        SPIN_LOCK_ISR_GIVE(&this->m_read_buf_lock);
+        #endif
 
         //// Update Time ////
         currT = this->getTime();

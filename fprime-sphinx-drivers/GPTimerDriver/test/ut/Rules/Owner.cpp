@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Owner.cpp
 // \author ciankc
 // \brief  Rules/Owner class implementation
@@ -13,9 +13,9 @@
 #include "Owner.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Owner__ClaimOK(void) const
@@ -34,7 +34,7 @@ namespace Drv {
     action__Owner__ClaimOK(void)
   {
     //printf("Action for Owner ClaimOK\n");
-    
+
 
     U32 timer = 0;
 
@@ -42,7 +42,7 @@ namespace Drv {
     timer = this->invoke_to_gPTimerDriver_Claim(0, 4);
     ASSERT_EQ(timer, 0);
     ASSERT_TRUE(this->component.freeTimers[0] == false);
-    
+
     //return timer for remaining 3 timers
     for(U32 i = 1; i < 4; i++)
     {
@@ -82,7 +82,7 @@ namespace Drv {
 
     //should fail with invalid timer
     ASSERT_DEATH({this->invoke_to_gPTimerDriver_Claim(0, 5);},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
   }
 
@@ -94,7 +94,7 @@ namespace Drv {
     for(U32 i = 0; i < 4; i++)
     {
       result &= !(this->component.freeTimers[i]);
-    } 
+    }
     //printf("Precondition for Owner UnclaimOK result is: %d\n", result);
     return result;
   }
@@ -103,13 +103,13 @@ namespace Drv {
     action__Owner__UnclaimOK(void)
   {
     //printf("Action for Owner UnclaimOK\n");
-    
+
     for(U32 i = 0; i < 4; i++)
     {
       this->invoke_to_gPTimerDriver_Unclaim(0, i);
       ASSERT_TRUE(this->component.freeTimers[i] == true);
     }
-    
+
   }
 
   bool TestState ::
@@ -128,8 +128,8 @@ namespace Drv {
 
     //should fail with invalid timer
     ASSERT_DEATH({this->invoke_to_gPTimerDriver_Unclaim(0, 5);},
-	       "Assertion `0' failed.");
-    
+	       "Assertion");
+
   }
 
 
@@ -179,17 +179,17 @@ namespace Drv {
     }
 
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-    
+    // ----------------------------------------------------------------------
+
     void Tester ::
       UnclaimOK(void)
     {
       //apply rule
       this->ruleClaimOK.apply(this->testState);
       this->ruleUnclaimOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       UnclaimERROR(void)
@@ -204,7 +204,7 @@ namespace Drv {
     {
       //apply rule
       this->ruleClaimOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ClaimERROR(void)

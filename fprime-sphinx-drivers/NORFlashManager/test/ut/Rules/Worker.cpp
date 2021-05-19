@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Worker.cpp
 // \author ciankc
 // \brief  Rules/Worker class implementation
@@ -14,9 +14,9 @@
 #include "Worker.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Worker__Write(void) const
@@ -31,12 +31,12 @@ namespace Drv {
     action__Worker__Write(void)
   {
     //printf("Action for Worker Write\n");
-    
+
     this->component.m_state = NORMGR_WRITING;
     this->invoke_to_worker_done(0, NORMGR_OK, 0, 0);
     this->component.doDispatch();
     this->clearHistory();
-    
+
     this->component.m_state = NORMGR_WRITING;
     this->invoke_to_worker_done(0, NORMGR_TIMEOUT, 0, 0);
     this->component.doDispatch();
@@ -81,7 +81,7 @@ namespace Drv {
     ASSERT_EVENTS_NOR_FAILED_TO_VERIFY_DATA_SIZE(1);
     ASSERT_EVENTS_NOR_FAILED_TO_RESET_SIZE(1);
     this->clearHistory();
-    
+
     this->component.m_state = NORMGR_WRITING;
     this->invoke_to_worker_done(0, NORMGR_FAILED_TO_RESET_BYPASS_RESET, 0, 0);
     this->component.doDispatch();
@@ -104,10 +104,10 @@ namespace Drv {
     action__Worker__Read(void)
   {
     //printf("Action for Worker Read\n");
-    
+
     this->component.m_state = NORMGR_READING;
     this->invoke_to_worker_done(0, NORMGR_OK, 0, 0);
-    this->component.doDispatch();    
+    this->component.doDispatch();
     this->clearHistory();
 
     this->component.m_state = NORMGR_READING;
@@ -136,10 +136,10 @@ namespace Drv {
     action__Worker__Erase(void)
   {
     //printf("Action for Worker Erase\n");
-    
+
     this->component.m_state = NORMGR_ERASING;
     this->invoke_to_worker_done(0, NORMGR_OK, 0, 0);
-    this->component.doDispatch();    
+    this->component.doDispatch();
     ASSERT_EVENTS_NOR_ERASE_DONE_SIZE(1);
     this->clearHistory();
 
@@ -189,10 +189,10 @@ namespace Drv {
     action__Worker__Reset(void)
   {
     //printf("Action for Worker Reset\n");
-    
+
     this->component.m_state = NORMGR_RESETING;
     this->invoke_to_worker_done(0, NORMGR_OK, 0, 0);
-    this->component.doDispatch();    
+    this->component.doDispatch();
     ASSERT_CMD_RESPONSE_SIZE(1);
     this->clearHistory();
 
@@ -217,13 +217,13 @@ namespace Drv {
     action__Worker__Verify(void)
   {
     //printf("Action for Worker Verify\n");
-    
+
     this->component.m_state = NORMGR_VERIFYING;
     this->invoke_to_worker_done(0, NORMGR_OK, 0, 0);
-    this->component.doDispatch();    
+    this->component.doDispatch();
     ASSERT_EVENTS_NOR_CHECKSUM_VERIFY_DONE_SIZE(1);
     this->clearHistory();
-    
+
     this->component.m_state = NORMGR_VERIFYING;
     this->invoke_to_worker_done(0, NORMGR_FAILED_TO_VERIFY, 0, 0);
     this->component.doDispatch();
@@ -244,43 +244,43 @@ namespace Drv {
     action__Worker__Error(void)
   {
     //printf("Action for Worker Error\n");
-    
+
     //invoke with invalid status
     this->component.m_state = NORMGR_WRITING;
     ASSERT_DEATH({this->invoke_to_worker_done(0, 30, 0, 0);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
-    
+                  "Assertion");
+
     this->component.m_state = NORMGR_ERASING;
     ASSERT_DEATH({this->invoke_to_worker_done(0, 30, 0, 0);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
+                  "Assertion");
 
     this->component.m_state = NORMGR_READING;
     ASSERT_DEATH({this->invoke_to_worker_done(0, 30, 0, 0);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
+                  "Assertion");
 
     this->component.m_state = NORMGR_VERIFYING;
     ASSERT_DEATH({this->invoke_to_worker_done(0, 30, 0, 0);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
+                  "Assertion");
 
     //invalid state
     this->component.m_state = NORMGR_IDLE;
     ASSERT_DEATH({this->invoke_to_worker_done(0, 0, 0, 0);
                   this->component.doDispatch();},
-                  "Assertion `0' failed.");
+                  "Assertion");
   }
 
 
   namespace Worker {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
+    // ----------------------------------------------------------------------
 
-    Tester :: Tester(const char* compName, U32 timeout) 
+    Tester :: Tester(const char* compName, U32 timeout)
       : testState(compName, timeout)
     {
 
@@ -291,7 +291,7 @@ namespace Drv {
     {
       //apply rule
       this->ruleWrite.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       Read(void)

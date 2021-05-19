@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Write.cpp
 // \author ciankc
 // \brief  Rules/Write class implementation
@@ -14,9 +14,9 @@
 #include "Write.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Write__OK(void) const
@@ -32,7 +32,7 @@ namespace Drv {
     action__Write__OK(void)
   {
     //printf("Action for Write OK\n");
-    
+
     //base address of NOR flash
     U32 addr = 0x00000000;
     //write 8 bytes of data
@@ -50,7 +50,7 @@ namespace Drv {
     val = readReg(next_addr);
     ASSERT_EQ(val, mark2);
     ASSERT_EQ(this->component.m_state, NORMGR_WRITING);
-   
+
     U8 data2[8] = {0xCC, 0xCC, 0xCC, 0xCC, 0x87, 0x65, 0x43, 0x21};
     U32 mark3 = 0xCCCCCCCC;
     U32 mark4 = 0x87654321;
@@ -91,47 +91,47 @@ namespace Drv {
     writeReg(0x00000000, 0xDEADC0DE);
 
     this->component.m_state = NORMGR_WRITING;
-    
+
     this->invoke_to_request_write(0, addr, data, 5, 0);
     this->component.doDispatch();
     ASSERT_EQ(readReg(0x00000000), 0xDEADC0DE);
-    
+
     this->component.m_state = NORMGR_IDLE;
 
     //null ptr
     U8* null_ptr = NULL;
     ASSERT_DEATH({this->invoke_to_request_write(0, addr, null_ptr, 8, 0);
                   this->component.doDispatch();},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //invalid addr
     U32 invalid_addr = 0x30000000;
     ASSERT_DEATH({this->invoke_to_request_write(0, invalid_addr, data, 5, 0);
 	       this->component.doDispatch();},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
     //invalid count
     U32 invalid_count = 70000;
     ASSERT_DEATH({this->invoke_to_request_write(0, addr, data, invalid_count, 0);
 	       this->component.doDispatch();},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //out of bounds write
     U32 close_addr = 0x1FFFFFFF;
     ASSERT_DEATH({this->invoke_to_request_write(0, close_addr, data, 5, 0);
 	       this->component.doDispatch();},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
   }
 
 
   namespace Write {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
+    // ----------------------------------------------------------------------
 
-    Tester :: Tester(const char* compName, U32 timeout) 
+    Tester :: Tester(const char* compName, U32 timeout)
       : testState(compName, timeout)
     {
 
@@ -142,7 +142,7 @@ namespace Drv {
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)

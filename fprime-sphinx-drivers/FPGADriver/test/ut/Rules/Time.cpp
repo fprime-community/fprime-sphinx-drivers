@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Time.cpp
 // \author ciankc
 // \brief  Rules/Time class implementation
@@ -13,9 +13,9 @@
 #include "Time.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Time__OK(void) const
@@ -32,8 +32,8 @@ namespace Drv {
     //printf("Action for Time OK\n");
 
     U32 status = this->component.sphinx_time_go();
-    ASSERT_EQ(status, 0);  
-    
+    ASSERT_EQ(status, 0);
+
     FPGADriverComponentImpl* addr = &(this->component);
     //call time rti handler with valid pointer to component
     //do this 10 times to trigger timeRTIOut port call
@@ -41,9 +41,9 @@ namespace Drv {
     {
         this->component.sphinx_time_rti_handlr((I64)addr);
     }
-   
+
   }
- 
+
   bool TestState ::
     precondition__Time__ERROR(void) const
   {
@@ -59,18 +59,18 @@ namespace Drv {
     //printf("Action for Time ERROR\n");
 
     U64 addr = 0x00000000;
- 
-    //call rti handler with invalid arg 
+
+    //call rti handler with invalid arg
     ASSERT_DEATH({this->component.sphinx_time_rti_handlr(addr);},
-      "Assertion `0' failed.");
+      "Assertion");
   }
 
   namespace Time {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
-    
+    // ----------------------------------------------------------------------
+
     void Tester ::
       OK(void)
     {
@@ -84,7 +84,7 @@ namespace Drv {
       //apply rule
       this->ruleERROR.apply(this->testState);
     }
-        
+
   }
 
 }

@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Read.cpp
 // \author ciankc
 // \brief  Rules/Read class implementation
@@ -14,9 +14,9 @@
 #include "Read.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Read__OK(void) const
@@ -53,7 +53,7 @@ namespace Drv {
     action__Read__OK(void)
   {
     //printf("Action for Read OK\n");
-    
+
     //base address of NOR flash
     U32 addr = 0x00000000;
     //write 8 bytes of data
@@ -68,9 +68,9 @@ namespace Drv {
     this->component.doDispatch();
 
     checkValues(data, mark, mark2, 8);
-    
+
     ASSERT_EQ(this->component.m_state, NORMGR_READING);
-   
+
     U8 data2[8] = {0};
     U32 mark3 = 0xCCCCCCCC;
     U32 mark4 = 0x87654321;
@@ -105,53 +105,53 @@ namespace Drv {
     action__Read__ERROR(void)
   {
     //printf("Action for Read ERROR\n");
-    
+
     U8 data[4] = {0xDE,0xAD,0xC0,0xDE};
     U32 addr = 0x00000000;
     writeReg(0x00000000, 0xDEADDEAD);
     this->component.m_state = NORMGR_READING;
-    
+
     //write out busy, check that data wasn't actually read in
     this->invoke_to_request_read(0, addr, data, 4, 0);
     this->component.doDispatch();
     checkValues(data, 0xDEADC0DE, 0x00000000, 4);
 
     this->component.m_state = NORMGR_IDLE;
-    
+
     //null ptr
     U8* null_ptr = NULL;
     ASSERT_DEATH({this->invoke_to_request_read(0, addr, null_ptr, 8, 0);
                   this->component.doDispatch();},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //invalid addr
     U32 invalid_addr = 0x30000000;
     ASSERT_DEATH({this->invoke_to_request_read(0, invalid_addr, data, 5, 0);
 	       this->component.doDispatch();},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
     //invalid count
     U32 invalid_count = 70000;
     ASSERT_DEATH({this->invoke_to_request_read(0, addr, data, invalid_count, 0);
 	       this->component.doDispatch();},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
     //out of bounds read
     U32 close_addr = 0x1FFFFFFF;
     ASSERT_DEATH({this->invoke_to_request_read(0, close_addr, data, 5, 0);
 	       this->component.doDispatch();},
-	       "Assertion `0' failed.");
+	       "Assertion");
 
   }
 
 
   namespace Read {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
+    // ----------------------------------------------------------------------
 
-    Tester :: Tester(const char* compName, U32 timeout) 
+    Tester :: Tester(const char* compName, U32 timeout)
       : testState(compName, timeout)
     {
 
@@ -162,7 +162,7 @@ namespace Drv {
     {
       //apply rule
       this->ruleOK.apply(this->testState);
-    }    
+    }
 
     void Tester ::
       ERROR(void)
