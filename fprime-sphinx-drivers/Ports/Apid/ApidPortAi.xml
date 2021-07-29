@@ -3,7 +3,7 @@
 
 <interface name="Apid" namespace="Drv">
     <include_header>Fw/Time/Time.hpp</include_header>
-    <include_header>Fw/ComFile/FileBuffer.hpp</include_header>
+    <include_header>Fw/Com/ComBuffer.hpp</include_header>
     <comment>
     Port Type interface arguments.
     </comment>
@@ -12,7 +12,7 @@
         </arg>
         <arg name="apid" type="U16" pass_by="value">
         </arg>
-        <arg name="data" type="Fw::FileBuffer" pass_by="reference">
+        <arg name="data" type="Fw::ComBuffer" pass_by="reference">
         </arg>
         <arg name="apid_rec" type="U16" pass_by="value">
         </arg>
