@@ -5,7 +5,6 @@
 
     <import_port_type>fprime-sphinx-drivers/Ports/WakeupManager_Sleep/WakeupManager_SleepPortAi.xml</import_port_type>
     <import_port_type>Fw/Time/TimePortAi.xml</import_port_type>
-    <import_dictionary>fprime-sphinx-drivers/WakeupManager/InternalInterface.xml</import_dictionary>
     <ports>
     
 
@@ -16,4 +15,13 @@
         </port>
     </ports>
 
+    <internal_interfaces>
+        <internal_interface name="wakeupHandler">
+            <comment>
+            Interface to allow the ISR to poke the thread to handle wakeups.
+            </comment>
+            <args>
+            </args>
+        </internal_interface>
+    </internal_interfaces>
 </component>
