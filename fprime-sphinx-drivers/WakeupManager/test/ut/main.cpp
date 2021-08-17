@@ -78,10 +78,6 @@ TEST(WakeupQueueTest, qMaxLen)
     tester.qMaxLen();
 }
 
-TEST(Teardown, OK) {
-  Drv::SphinxDrvReg::clearFiles();
-}
-
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);

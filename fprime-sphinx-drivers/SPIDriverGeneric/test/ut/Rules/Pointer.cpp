@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Pointer.cpp
 // \author ciankc
 // \brief  Rules/Pointer class implementation
@@ -14,9 +14,9 @@
 #include "Pointer.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Pointer__Invalid(void) const
@@ -36,25 +36,25 @@ namespace Drv {
 
     //Null ptr passed to spi_rw
     U8* data_8 = NULL;
-    ASSERT_DEATH({this->invoke_to_read_write_8(0, data_8, data_8, 5, 10000);}, 
-		 "Assertion `0' failed.");
+    ASSERT_DEATH({this->invoke_to_read_write_8(0, data_8, data_8, 5, 10000);},
+		 "Assertion");
 
     //Null ptr passed to spi_rw
-    U16* data_16 = NULL;    
+    U16* data_16 = NULL;
     ASSERT_DEATH({this->invoke_to_read_write_16(0, data_16, data_16, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
-    //Null ptr passed to spi_rw                                                                        
+    //Null ptr passed to spi_rw
     U32* data_32 = NULL;
     ASSERT_DEATH({this->invoke_to_read_write_32(0, data_32, data_32, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
   }
 
   namespace Pointer {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
 
     void Tester ::
       Invalid(void)

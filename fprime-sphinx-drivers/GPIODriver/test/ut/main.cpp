@@ -64,11 +64,6 @@ namespace Drv {
     Selected::Tester tester;
     tester.Random();
   }
-  
-  TEST(Teardown, OK) {
-    SphinxDrvReg::clearFiles();
-  }
-  
 }
 
 int main(int argc, char **argv) {

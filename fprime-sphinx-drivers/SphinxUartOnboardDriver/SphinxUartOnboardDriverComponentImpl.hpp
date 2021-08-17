@@ -20,6 +20,7 @@
 #ifdef TGT_OS_TYPE_VXWORKS
 extern "C" {
 #include <intLib.h>
+#include <spinLockLib.h>
 #include <iv.h>
 }
 #endif
@@ -183,7 +184,7 @@ namespace Drv {
       );
 
 
-      void lock_read_fifo(void);
+      void read_fifo(void);
       void HandleGPIOInterrupt(void);
 
       enum IOErrorBit {
@@ -266,7 +267,6 @@ namespace Drv {
       //prevents clearing bit on Linux build that would cause infinite loops
       void push_status(const U32 bits, U32 flag=0);
 
- 
       /**
        * Return true if new data is available in the read FIFO
        *
@@ -307,10 +307,6 @@ namespace Drv {
        * errors occured. See IOErrorBit enum.
        */
       void set_tx_enable(const bool enable);
-
-
-
-      void read_fifo(void);
 
       void setup_port(U8 portNum);
 
@@ -377,12 +373,15 @@ namespace Drv {
       U32 m_address;                // Register memory address
       RegisterType m_registerType;  // Register type: hardware or firmware
 
+      #ifdef TGT_OS_TYPE_VXWORKS
+        spinlockIsr_t m_read_buf_lock;
+      #endif
     };
 
     void UARTHWintHandler
     #ifdef TGT_OS_TYPE_VXWORKS
       (I32 arg);
-    #else 
+    #else
       (I64 arg);
     #endif
 

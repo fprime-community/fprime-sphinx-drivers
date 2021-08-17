@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  SPWManager/test/ut/Tester.hpp
 // \author vwong
 // \brief  hpp file for SPWManager test harness implementation class
@@ -7,14 +7,13 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 #ifndef TESTER_HPP
 #define TESTER_HPP
 
 #include "GTestBase.hpp"
 #include "fprime-sphinx-drivers/SPWManager/SPWManagerComponentImpl.hpp"
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv {
 
@@ -38,9 +37,9 @@ namespace Drv {
 
     public:
 
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
       // Tests
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
 
       void testPing(void);
       void testSyncReadWrite(void);
@@ -67,21 +66,21 @@ namespace Drv {
       //!
       I32 from_driverWriteRMAP_handler(
           const NATIVE_INT_TYPE portNum, //!< The port number
-          U8 dest_addr, 
-          U8 dest_key, 
-          U32 write_addr, 
-          U8 *buf_ptr, 
-          U32 num_bytes, 
-          U8 increment, 
-          U8 verify, 
-          U8 acknowledge 
+          U8 dest_addr,
+          U8 dest_key,
+          U32 write_addr,
+          U8 *buf_ptr,
+          U32 num_bytes,
+          U8 increment,
+          U8 verify,
+          U8 acknowledge
       );
 
       //! Handler for from_statusOut
       //!
       void from_statusOut_handler(
           const NATIVE_INT_TYPE portNum, //!< The port number
-          I32 spwStatus 
+          I32 spwStatus
       );
 
       //! Handler for from_PingResponse
@@ -101,12 +100,12 @@ namespace Drv {
       //!
       I32 from_driverReadRMAP_handler(
           const NATIVE_INT_TYPE portNum, //!< The port number
-          U8 dest_addr, 
-          U8 dest_key, 
-          U32 read_addr, 
-          U8 *buf_ptr, 
-          U32 num_bytes, 
-          U8 increment 
+          U8 dest_addr,
+          U8 dest_key,
+          U32 read_addr,
+          U8 *buf_ptr,
+          U32 num_bytes,
+          U8 increment
       );
 
       //! Handler for from_driverGetStatus

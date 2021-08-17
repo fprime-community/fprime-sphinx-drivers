@@ -15,7 +15,6 @@
 #include <Fw/Types/BasicTypes.hpp>
 #include <FpConfig.hpp>
 #include <gtest/gtest.h>
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv {
 
@@ -28,6 +27,9 @@ namespace Drv {
 
             // Check that all bits can be set and cleared
             void testAllBits(void);
+
+            // Check that all bits can be set and cleared atomically
+            void testAllBitsAtomic(void);
 
             // Check that an out-of-range offset results in a failure for setBit
             void testOutOfRangeSet(void);

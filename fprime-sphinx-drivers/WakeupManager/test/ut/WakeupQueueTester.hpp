@@ -11,7 +11,6 @@
 #include <Os/Task.hpp>
 #include <Os/TaskId.hpp>
 #include <gtest/gtest.h>
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv
 {

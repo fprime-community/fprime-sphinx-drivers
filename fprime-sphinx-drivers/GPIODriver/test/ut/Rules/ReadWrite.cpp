@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/ReadWrite.cpp
 // \author ciankc
 // \brief  Rules/ReadWrite class implementation
@@ -14,9 +14,9 @@
 #include "ReadWrite.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__ReadWrite__DIRIN(void) const
@@ -34,7 +34,7 @@ namespace Drv {
 
     clearBit(addr1 + GPIO_DIR_OFFSET, pn1);
     clearBit(addr2 + GPIO_DIR_OFFSET, pn2-32);
-    
+
   }
 
 
@@ -61,7 +61,7 @@ namespace Drv {
     precondition__ReadWrite__READIN(void) const
   {
     bool result = true;
-    // both must be inputs 
+    // both must be inputs
     result = !(readBit(addr1 + GPIO_DIR_OFFSET, pn1) || readBit(addr2 + GPIO_DIR_OFFSET, pn2-32));
     //printf("Precondition for ReadWrite READIN result is: %d\n", result);
     return result;
@@ -78,7 +78,7 @@ namespace Drv {
     value = this->invoke_to_gpio_readPin(0, pn2);
     val_check = readBit(addr2 + GPIO_DATA_OFFSET, pn2-32);
     ASSERT_EQ(value, val_check);
-   
+
   }
 
 
@@ -104,7 +104,7 @@ bool TestState ::
     value = this->invoke_to_gpio_readPin(0, pn2);
     val_check = readBit(addr2 + GPIO_OUT_OFFSET, pn2-32);
     ASSERT_EQ(value, val_check);
-   
+
   }
 
 bool TestState ::
@@ -181,19 +181,19 @@ void TestState ::
     U32 pin_num = 70;
 
     ASSERT_DEATH({this->invoke_to_gpio_readPin(0, pin_num);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_DEATH({this->invoke_to_gpio_setPin(0, pin_num);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_DEATH({this->invoke_to_gpio_clearPin(0, pin_num);},
-                 "Assertion `0' failed.");
+                 "Assertion");
 
   }
 
   namespace ReadWrite {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
 
     void Tester ::
       DIRIN(void)

@@ -9,7 +9,6 @@ register_fprime_module()
 set(UT_MOD_DEPS
         #eventually change to not use local random
         fprime-sphinx-drivers/Random
-        fprime-sphinx-drivers/Util/LinuxDrvReg
         fprime-sphinx-drivers/Util
         )
 set(UT_SOURCE_FILES

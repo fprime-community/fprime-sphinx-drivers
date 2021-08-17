@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  SphinxUartOnboardDriver/test/ut/Tester.hpp
 // \author ciankc
 // \brief  hpp file for SphinxUartOnboardDriver test harness implementation class
@@ -7,14 +7,13 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 #ifndef TESTER_HPP
 #define TESTER_HPP
 
 #include "GTestBase.hpp"
 #include "fprime-sphinx-drivers/SphinxUartOnboardDriver/SphinxUartOnboardDriverComponentImpl.hpp"
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv {
 
@@ -38,9 +37,9 @@ namespace Drv {
 
     public:
 
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
       // Tests
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
 
       //! To do
       //!

@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  SPWDriver/test/ut/Tester.hpp
 // \author vwong
 // \brief  hpp file for SPWDriver test harness implementation class
@@ -7,14 +7,13 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 #ifndef TESTER_HPP
 #define TESTER_HPP
 
 #include "GTestBase.hpp"
 #include "fprime-sphinx-drivers/SPWDriver/SPWDriverComponentImpl.hpp"
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 
 namespace Drv {
 
@@ -38,9 +37,9 @@ namespace Drv {
 
     public:
 
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
       // Tests
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
 
       void testRandomRMAPCommandHeaders(U32 count);
       void testRandomRMAPReplyHeaders(U32 count);
@@ -56,7 +55,7 @@ namespace Drv {
       // Helper methods
       // ----------------------------------------------------------------------
       //
-    private: // types 
+    private: // types
 
       struct RMAPSettings {
         U8 iscmd;

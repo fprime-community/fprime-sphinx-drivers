@@ -1,7 +1,7 @@
 // ======================================================================
 // \title  Selected.cpp
 // \author ciankc
-// \brief  Scenarios containing selected rules        
+// \brief  Scenarios containing selected rules
 //
 // \copyright
 // Copyright (C) 2019 California Institute of Technology.
@@ -41,12 +41,12 @@
        Test::Rule<TestState>* rules[] = {
          &rule0,
          &rule1,
-         &rule2, 
+         &rule2,
          &rule3,
          &rule4,
-         &rule5, 
-         &rule6, 
-         &rule7, 
+         &rule5,
+         &rule6,
+         &rule7,
          &rule8,
          &rule9
        };
@@ -58,10 +58,10 @@
 
        Test::RandomScenario<TestState> scenario(
            "Selected.Random",
-	   this->testState, 
+	   this->testState,
 	   ruleArray
        );
-       scenario.runWithBound(1000);
+       scenario.runWithBound(100);
      }
 
    }
