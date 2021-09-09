@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/RWReverse.cpp
 // \author ciankc
 // \brief  Rules/RWReverse class implementation
@@ -14,9 +14,9 @@
 #include "RWReverse.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__RWReverse__SUCCESS8(void) const
@@ -48,7 +48,7 @@ namespace Drv {
 				  (U8) 0,  //prescale modulus factor
 				  (U8) 0); //clock_gap
     ASSERT_EQ(status, 0);
-    
+
     setBit(SPI_CTRL_EVT_REG, EVENT_NF);
     setBit(SPI_CTRL_EVT_REG, EVENT_NE);
     clearBit(SPI_CTRL_EVT_REG, EVENT_TIP);
@@ -60,19 +60,19 @@ namespace Drv {
     status = this->invoke_to_read_write_8(0, data_8, data_8, 5, 10000);
     ASSERT_EQ(status, 0);
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U16 data_16[5] = {1,2,3,4,5};
 
     //read/write 16 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_16(0, data_16, data_16, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U32 data_32[5] = {1,2,3,4,5};
 
     //read/write 32 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_32(0, data_32, data_32, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
   }
 
@@ -93,7 +93,7 @@ namespace Drv {
     //printf("Action for RWReverse SUCCESS16\n");
     // Initialize test state
     this->clearHistory();
-    
+
     I32 status;
 
     status = this->invoke_to_spi_configure((NATIVE_INT_TYPE) 0, //portNum
@@ -116,19 +116,19 @@ namespace Drv {
     status = this->invoke_to_read_write_16(0, data_16, data_16, 5, 10000);
     ASSERT_EQ(status, 0);
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U8 data_8[5] = {1,2,3,4,5};
 
     //read/write 8 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_8(0, data_8, data_8, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U32 data_32[5] = {1,2,3,4,5};
 
     //read/write 32 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_32(0, data_32, data_32, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
   }
 
@@ -150,7 +150,7 @@ namespace Drv {
     //printf("Action for RWReverse SUCCESS32\n");
     // Initialize test state
     this->clearHistory();
-    
+
     I32 status;
 
     status = this->invoke_to_spi_configure((NATIVE_INT_TYPE) 0, //portNum
@@ -173,19 +173,19 @@ namespace Drv {
     status = this->invoke_to_read_write_32(0, data_32, data_32, 5, 10000);
     ASSERT_EQ(status, 0);
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U16 data_16[5] = {1,2,3,4,5};
 
     //read/write 16 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_16(0, data_16, data_16, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
-    
+
     U8 data_8[5] = {1,2,3,4,5};
 
     //read/write 8 bit spi word with claiming, should fail since the word length is incorrect
     ASSERT_DEATH({this->invoke_to_read_write_8(0, data_8, data_8, 5, 10000);},
-                 "Assertion `0' failed.");
+                 "Assertion");
     ASSERT_EQ(this->component.m_isOwned, true);
   }
 
@@ -193,18 +193,18 @@ namespace Drv {
 
   namespace RWReverse {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
 
     void Tester ::
     SUCCESS8(void)
-    { 
+    {
       //apply rule
       this->mutexTester.ruleClaimOK.apply(this->testState);
       this->ruleSUCCESS8.apply(this->testState);
     }
-    
+
     void Tester ::
     SUCCESS16(void)
     {
@@ -215,7 +215,7 @@ namespace Drv {
 
     void Tester ::
     SUCCESS32(void)
-    {      
+    {
       //apply rule
       this->mutexTester.ruleClaimOK.apply(this->testState);
       this->ruleSUCCESS32.apply(this->testState);

@@ -8,7 +8,6 @@ set(MOD_DEPS
         )
 register_fprime_module()
 set(UT_MOD_DEPS
-        fprime-sphinx-drivers/Util/LinuxDrvReg
         fprime-sphinx-drivers/ADCPacket
         )
 set(UT_SOURCE_FILES

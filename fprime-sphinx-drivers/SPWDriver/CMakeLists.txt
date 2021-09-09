@@ -16,7 +16,6 @@ set(MOD_DEPS
         )
 register_fprime_module()
 set(UT_MOD_DEPS
-        fprime-sphinx-drivers/Util/LinuxDrvReg
         fprime-sphinx-drivers/Util
         fprime-sphinx-drivers/Ports/SphinxSPW_ReadRMAP
         fprime-sphinx-drivers/Ports/SphinxSPW_WriteRMAP

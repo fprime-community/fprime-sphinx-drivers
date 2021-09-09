@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  SphinxDrvBitUtil.hpp
 // \author nserafin
 // \brief  Implementation of bit-twiddling utilities.
@@ -18,20 +18,19 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 #ifndef SPHINXDRVBITUTIL_HPP
 #define SPHINXDRVBITUTIL_HPP
 
 #include <fprime-sphinx-drivers/Util/SphinxDrvUtil.hpp>
+#include <fprime-sphinx-drivers/Util/SphinxAtomicUtil.hpp>
 #include <Fw/Types/BasicTypes.hpp>
 #include <Fw/Types/Assert.hpp>
 
 #include <FpConfig.hpp>
 
 #include <Os/InterruptLock.hpp>
-#include <Os/TaskLock.hpp>
-
 
 namespace Drv {
 
@@ -43,7 +42,6 @@ namespace Drv {
   {
     FW_ASSERT(offset < (sizeof(NATIVE_UINT_TYPE) * BITS_PER_BYTE));
     writeRegPartial(uaddr, offset, 1, 0);
-
   }
 
   /*
@@ -54,91 +52,56 @@ namespace Drv {
   {
     FW_ASSERT(offset < (sizeof(NATIVE_UINT_TYPE) * BITS_PER_BYTE));
     writeRegPartial(uaddr, offset, 1, 1);
-
   }
 
   /*
-   * With synchronization suitable for a shared resource in an interrupt
-   * context, clear the bit offset-many bits from the right in the word
-   * at memory location addr.
-   *
-   * Task rescheduling will not occur until after an ISR completes, so
-   * Os::TaskLock() is not required (and is, in fact, forbidden). The
-   * ISR author could have re-enabled interrupts, however, so those must
-   * be disabled.
-   */
-  inline void clearBitAtomicInt(POINTER_CAST uaddr, NATIVE_UINT_TYPE offset)
-  {
-    Os::InterruptLock iLock;
-
-    iLock.lock();
-
-    clearBit(uaddr, offset);
-
-    iLock.unLock();
-  }
-
-  /*
-   * With synchronization suitable for a shared resource in an interrupt
-   * context, set the bit offset-many bits from the right in the word
-   * at memory location addr.
-   *
-   * Task rescheduling will not occur until after an ISR completes, so
-   * Os::TaskLock() is not required (and is, in fact, forbidden). The
-   * ISR author could have re-enabled interrupts, however, so those must
-   * be disabled.
-   */
-  inline void setBitAtomicInt(POINTER_CAST uaddr, NATIVE_UINT_TYPE offset)
-  {
-    Os::InterruptLock iLock;
-
-    iLock.lock();
-
-    setBit(uaddr, offset);
-
-    iLock.unLock();
-  }
-
-  /*
-   * With synchronization suitable for a shared resource in a non-interrupt
-   * context, clear the bit offset-many bits from the right in the word at
+   * Atomically clear the bit offset-many bits from the right in the word at
    * memory location addr.
    *
-   * Both task rescheduling and interrupts must be locked out to ensure
-   * that preemption will not occur.
+   * Note: On non-VxWorks platforms this function is not concurrency safe.
+   * The atomic wrappers take a pointer, but pointers to maps are not
+   * guaranteed to be stable (though on most implementations they are),
+   * across insertions and deletions.
    */
   inline void clearBitAtomic(POINTER_CAST uaddr, NATIVE_UINT_TYPE offset)
   {
-    NATIVE_INT_TYPE status;
+    FW_ASSERT(offset < (sizeof(NATIVE_UINT_TYPE) * BITS_PER_BYTE));
 
-    status = Os::TaskLock::lock();
-    FW_ASSERT(status == 0);
+#ifdef TGT_OS_TYPE_VXWORKS
+    U32* reg = reinterpret_cast<U32*>(uaddr);
+#else
+    if(!Drv::emuRegMap.count(uaddr)) {
+      Drv::emuRegMap[uaddr] = uaddr;
+    }
+    U32* reg = &Drv::emuRegMap[uaddr];
+#endif
 
-    clearBitAtomicInt(uaddr, offset);
-
-    status = Os::TaskLock::unLock();
-    FW_ASSERT(status == 0);
+    AtomicUtil::And(reg, ~(1 << offset));
   }
 
   /*
-   * With synchronization suitable for a shared resource in a non-interrupt
-   * context, set the bit offset-many bits from the right in the word at
+   * Atomically set the bit offset-many bits from the right in the word at
    * memory location addr.
    *
-   * Both task rescheduling and interrupts must be locked out to ensure
-   * that preemption will not occur.
+   * Note: On non-VxWorks platforms this function is not concurrency safe.
+   * The atomic wrappers take a pointer, but pointers to maps are not
+   * guaranteed to be stable (though on most implementations they are),
+   * across insertions and deletions.
    */
   inline void setBitAtomic(POINTER_CAST uaddr, NATIVE_UINT_TYPE offset)
   {
-    NATIVE_INT_TYPE status;
+    FW_ASSERT(offset < (sizeof(NATIVE_UINT_TYPE) * BITS_PER_BYTE));
 
-    status = Os::TaskLock::lock();
-    FW_ASSERT(status == 0);
+#ifdef TGT_OS_TYPE_VXWORKS
+    U32* reg = reinterpret_cast<U32*>(uaddr);
+#else
+    if(!Drv::emuRegMap.count(uaddr)) {
+      Drv::emuRegMap[uaddr] = uaddr;
+    }
+    U32* reg = &Drv::emuRegMap[uaddr];
+#endif
 
-    setBitAtomicInt(uaddr, offset);
-
-    status = Os::TaskLock::unLock();
-    FW_ASSERT(status == 0);
+    AtomicUtil::Or(reg, (1 << offset));
   }
 
   /*

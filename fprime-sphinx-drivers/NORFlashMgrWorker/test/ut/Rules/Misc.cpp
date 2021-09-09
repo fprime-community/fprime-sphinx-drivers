@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  Rules/Misc.cpp
 // \author ciankc
 // \brief  Rules/Misc class implementation
@@ -14,9 +14,9 @@
 #include "Misc.hpp"
 
 namespace Drv {
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
   // Rule definitions
-  // ---------------------------------------------------------------------- 
+  // ----------------------------------------------------------------------
 
   bool TestState ::
     precondition__Misc__Cancel(void) const
@@ -69,12 +69,12 @@ namespace Drv {
   {
     //printf("Action for Misc Verify\n");
     this->clearHistory();
-    this->invoke_to_verify(0, 512, 1024);    
+    this->invoke_to_verify(0, 512, 1024);
     this->component.doDispatch();
 
     //checksum
-    ASSERT_DEATH({this->component.checksum_compute(9*1024*1024, 512);}, 
-                  "Assertion `0' failed.");
+    ASSERT_DEATH({this->component.checksum_compute(9*1024*1024, 512);},
+                  "Assertion");
 
     writeReg(512, 0xFFFFFFFF);
     U32 res = this->component.checksum_compute(4, 512);
@@ -84,9 +84,9 @@ namespace Drv {
 
   namespace Misc {
 
-    // ---------------------------------------------------------------------- 
+    // ----------------------------------------------------------------------
     // Tests
-    // ----------------------------------------------------------------------     
+    // ----------------------------------------------------------------------
 
     void Tester ::
       Cancel(void)

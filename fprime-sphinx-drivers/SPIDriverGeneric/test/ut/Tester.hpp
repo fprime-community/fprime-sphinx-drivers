@@ -1,4 +1,4 @@
-// ====================================================================== 
+// ======================================================================
 // \title  SPIDriverGeneric/test/ut/Tester.hpp
 // \author bsoudry
 // \brief  hpp file for SPIDriverGeneric test harness implementation class
@@ -7,7 +7,7 @@
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
 // acknowledged.
-// ====================================================================== 
+// ======================================================================
 
 #ifndef TESTER_HPP
 #define TESTER_HPP
@@ -15,7 +15,6 @@
 #include "GTestBase.hpp"
 #include "fprime-sphinx-drivers/SPIDriverGeneric/SPIDriverGenericComponentImpl.hpp"
 #include "fprime-sphinx-drivers/SPIDriverGeneric/SPIDriverGenericErrorCodes.hpp"
-#include "fprime-sphinx-drivers/Util/SphinxDrvReg.hpp"
 #include "fprime-sphinx-drivers/Random/Random.hpp"
 
 namespace Drv {
@@ -43,16 +42,16 @@ namespace Drv {
 	   U8 prescale_modulus,
 	   U8 prescale_modulus_factor,
 	   U8 clock_gap);
-    
+
       //! Destroy object Tester
       //!
       ~Tester(void);
 
     public:
 
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
       // Tests
-      // ---------------------------------------------------------------------- 
+      // ----------------------------------------------------------------------
       void testClaimUnclaimOK(void);
       void testDoubleClaim(void);
       void testDoubleUnclaim(void);
@@ -61,7 +60,7 @@ namespace Drv {
       void testConfigureNotOwner(void);
       void testRWNotOwner(void);
       void testConstructor(void);
- 
+
     private:
 
       // ----------------------------------------------------------------------
