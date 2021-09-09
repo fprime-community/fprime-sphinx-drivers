@@ -212,7 +212,7 @@ namespace Drv {
         const NATIVE_INT_TYPE portNum,
         Fw::Time timetag,
         U16 apid,
-        Fw::FileBuffer &data,
+        Fw::ComBuffer &data,
         U16 apid_rec
     )
   {
